@@ -1,107 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Mi Página Web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ge'lifiesta | Repostería Gourmet</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #fff0f5; color: #333; }
+        header { background: #ff85c1; padding: 30px; text-align: center; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .logo-text { font-size: 3rem; font-weight: bold; margin: 0; text-shadow: 2px 2px #e75480; }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        
+        /* Estilos de Servicios */
+        .servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: white; border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 6px 15px rgba(231, 84, 128, 0.2); border: 2px solid #ffc1e3; }
+        .card h3 { color: #e75480; font-size: 1.5rem; }
+        .card p { line-height: 1.6; }
+        .highlight { background: #ff85c1; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
 
-<style>
+        /* SECCIÓN DE GALERÍA RESPONSIVA */
+        .galeria-titulo { text-align: center; color: #e75480; margin-top: 50px; font-size: 2.2rem; }
+        .galeria-subtitulo { text-align: center; color: #ff85c1; margin-bottom: 30px; margin-top: -10px; font-weight: normal;}
+        
+        .galeria-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            margin-top: 20px; 
+        }
+        
+        .foto-cliente { 
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .foto-cliente img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            display: block;
+        }
+        
+        .info-cliente { padding: 20px; text-align: left; flex-grow: 1; }
+        .info-cliente h4 { margin: 0 0 10px 0; color: #e75480; font-size: 1.3rem; }
+        .info-cliente .p-desc { margin: 0; color: #555; line-height: 1.4; margin-bottom: 15px; font-weight: 600; }
+        .info-cliente p.testimonio { font-style: italic; font-size: 0.9rem; color: #777; border-left: 3px solid #ffc1e3; padding-left: 10px; margin: 0;}
 
-body{
-font-family: Arial;
-margin:0;
-background:#0f172a;
-color:white;
-}
+        /* Botón de Contacto */
+        .contacto { margin-top: 50px; text-align: center; background: #e75480; color: white; padding: 40px; border-radius: 20px; }
+        .whatsapp-btn { background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; }
 
-header{
-background:#1e293b;
-padding:20px;
-text-align:center;
-font-size:30px;
-}
-
-nav{
-background:#334155;
-padding:10px;
-text-align:center;
-}
-
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-weight:bold;
-}
-
-section{
-padding:40px;
-text-align:center;
-}
-
-.galeria{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.galeria img{
-width:250px;
-border-radius:10px;
-transition:0.3s;
-}
-
-.galeria img:hover{
-transform:scale(1.05);
-}
-
-footer{
-background:#1e293b;
-text-align:center;
-padding:15px;
-margin-top:40px;
-}
-
-</style>
+        /* AJUSTES PARA CELULAR */
+        @media (max-width: 600px) {
+            .logo-text { font-size: 2.2rem; }
+            .foto-cliente img { height: 250px; }
+            .container { padding: 10px; }
+            .galeria-titulo { font-size: 1.8rem; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-Mi Portafolio
+    <h1 class="logo-text">Ge'lifiesta</h1>
+    <p>Gelatina Gourmet & Repostería de Diseño</p>
 </header>
 
-<nav>
-<a href="#">Inicio</a>
-<a href="#">Proyectos</a>
-<a href="#">Contacto</a>
-</nav>
+<div class="container">
+    <div class="servicios">
+        <div class="card">
+            <h3>Impresiones Comestibles</h3>
+            <p>Personaliza tus creaciones con nuestras impresiones de alta calidad.</p>
+            <p><span class="highlight">Opciones:</span> Hoja de Arroz y Azúcar</p>
+        </div>
+        <div class="card">
+            <h3>Gelatinas Gourmet</h3>
+            <p>Elaboradas con ingredientes premium y diseños únicos.</p>
+            <p><span class="highlight">Temática:</span> ¡Cualquier personaje!</p>
+        </div>
+    </div>
 
-<section>
+    <h2 class="galeria-titulo">Diseños personalizados que encantan</h2>
+    <p class="galeria-subtitulo">Nuestros trabajos más recientes</p>
+    
+    <div class="galeria-grid">
+        <div class="foto-cliente">
+            <img src="image_1.png" alt="Homenaje al 18 cumpleaños">
+            <div class="info-cliente">
+                <h4>Homenaje al 18 cumpleaños</h4>
+                <p class="p-desc">Kit completo con gelatina central de Snoopy y paletas individuales a juego.</p>
+                <p class="testimonio">"¡La mesa de dulces quedó espectacular con este diseño! La impresión es súper nítida y el sabor increíble. ¡Gracias!" - <b>*Cumpleañera Feliz*</b></p>
+            </div>
+        </div>
 
-<h2>Bienvenido a mi página</h2>
-<p>Este es mi sitio web creado con GitHub Pages.</p>
+        <div class="foto-cliente">
+            <img src="image_2.png" alt="Aventura Saiyajin">
+            <div class="info-cliente">
+                <h4>Aventura Saiyajin para los 9 meses</h4>
+                <p class="p-desc">Diseño de Dragon Ball Z con gelatina de Goku y paletas 'Esferas del Dragón'.</p>
+                <p class="testimonio">"Buscábamos algo único para el cumple y Ge'lifiesta superó las expectativas. Las esferas del dragón fueron la sensación." - <b>*Papás de Thiago*</b></p>
+            </div>
+        </div>
 
-</section>
+        <div class="foto-cliente">
+            <img src="image_3.png" alt="Magia en la Fiesta con Bluey">
+            <div class="info-cliente">
+                <h4>Magia en la Fiesta con Bluey</h4>
+                <p class="p-desc">Gelatina principal de Bluey acompañada de paletas con todos los personajes de la serie.</p>
+                <p class="testimonio">"Mi hijo no podía creerlo cuando vio su pastel de Bluey. ¡Estaba todo perfecto y muy detallado! Súper recomendado." - <b>*Mamá de Mati*</b></p>
+            </div>
+        </div>
+    </div>
 
-<section>
-
-<h2>Mis proyectos</h2>
-
-<div class="galeria">
-
-<img src="https://picsum.photos/400/300?1">
-<img src="https://picsum.photos/400/300?2">
-<img src="https://picsum.photos/400/300?3">
-<img src="https://picsum.photos/400/300?4">
-
+    <div class="contacto">
+        <h2>¿Tienes un evento?</h2>
+        <a href="https://wa.me/522215561589" class="whatsapp-btn">Pedir por WhatsApp</a>
+    </div>
 </div>
-
-</section>
-
-<footer>
-© 2026 Mi página web
-</footer>
 
 </body>
 </html>
