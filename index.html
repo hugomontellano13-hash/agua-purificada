@@ -1,292 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purificadora Sargy</title>
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+        body{ background:linear-gradient(130deg,#02111b,#043b4a,#0b8793); color:white; overflow-x:hidden; text-align:center; }
+        
+        /* FONDO ANIMADO */
+        body::before{ content:""; position:fixed; width:200%; height:200%; background:radial-gradient(circle,#00e5ff33 2px, transparent 2px); background-size:60px 60px; animation:mover 20s linear infinite; z-index:-1; }
+        @keyframes mover{ 0%{transform:translate(0,0);} 100%{transform:translate(-200px,-200px);} }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        header{ padding:120px 20px; }
+        h1{ font-size:60px; letter-spacing:4px; background:linear-gradient(90deg,#00e5ff,#4facfe); -webkit-background-clip:text; color:transparent; }
+        header p{ margin-top:10px; font-size:22px; opacity:0.9; }
+        .logo{ width:300px; margin-top:30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-<title>Purificadora Sargy</title>
+        .btn{ margin-top:30px; display:inline-block; padding:14px 30px; border-radius:30px; background:linear-gradient(90deg,#00e5ff,#4facfe); color:black; text-decoration:none; font-weight:bold; transition:0.3s; }
+        .btn:hover{ transform:scale(1.1); }
 
-<style>
+        .section{ padding:80px 20px; }
+        .cards{ display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:40px; }
+        .card{ width:280px; padding:25px; border-radius:15px; background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); transition:0.4s; }
+        .card:hover{ transform:translateY(-12px) scale(1.05); background:rgba(255,255,255,0.15); }
+        .card img{ width:100%; border-radius:10px; margin-bottom:15px; }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+        .map{ margin-top:40px; }
+        footer{ padding:30px; text-align:center; opacity:0.7; }
 
-body{
-background:linear-gradient(130deg,#02111b,#043b4a,#0b8793);
-color:white;
-overflow-x:hidden;
-text-align:center;
-}
+        .whatsapp{ position:fixed; bottom:30px; right:30px; background:#25D366; color:white; padding:16px 22px; border-radius:50px; font-size:18px; text-decoration:none; box-shadow:0 0 20px #25D366; animation:flotar 2s infinite alternate; }
+        @keyframes flotar{ from{transform:translateY(0)} to{transform:translateY(-10px)} }
 
-/* FONDO ANIMADO */
-
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:radial-gradient(circle,#00e5ff33 2px, transparent 2px);
-background-size:60px 60px;
-animation:mover 20s linear infinite;
-z-index:-1;
-}
-
-@keyframes mover{
-0%{transform:translate(0,0);}
-100%{transform:translate(-200px,-200px);}
-}
-
-/* HEADER */
-
-header{
-padding:120px 20px;
-}
-
-h1{
-font-size:60px;
-letter-spacing:4px;
-background:linear-gradient(90deg,#00e5ff,#4facfe);
--webkit-background-clip:text;
-color:transparent;
-}
-
-header p{
-margin-top:10px;
-font-size:22px;
-opacity:0.9;
-}
-
-.logo{
-width:200px;
-margin-top:30px;
-}
-
-/* BOTON */
-
-.btn{
-margin-top:30px;
-display:inline-block;
-padding:14px 30px;
-border-radius:30px;
-background:linear-gradient(90deg,#00e5ff,#4facfe);
-color:black;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.1);
-}
-
-/* SECCIONES */
-
-.section{
-padding:80px 20px;
-}
-
-/* TARJETAS */
-
-.cards{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:40px;
-}
-
-.card{
-width:280px;
-padding:25px;
-border-radius:15px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-transition:0.4s;
-}
-
-.card:hover{
-transform:translateY(-12px) scale(1.05);
-background:rgba(255,255,255,0.15);
-}
-
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:15px;
-}
-
-/* MAPA */
-
-.map{
-margin-top:40px;
-}
-
-/* FOOTER */
-
-footer{
-padding:30px;
-text-align:center;
-opacity:0.7;
-}
-
-/* BOTON WHATSAPP */
-
-.whatsapp{
-position:fixed;
-bottom:30px;
-right:30px;
-background:#25D366;
-color:white;
-padding:16px 22px;
-border-radius:50px;
-font-size:18px;
-text-decoration:none;
-box-shadow:0 0 20px #25D366;
-animation:flotar 2s infinite alternate;
-}
-
-@keyframes flotar{
-from{transform:translateY(0)}
-to{transform:translateY(-10px)}
-}
-
-/* RESPONSIVE (CELULARES Y TABLETS) */
-
-@media (max-width:900px){
-
-h1{
-font-size:45px;
-}
-
-header{
-padding:80px 20px;
-}
-
-.cards{
-flex-direction:column;
-align-items:center;
-}
-
-.card{
-width:90%;
-}
-
-.logo{
-width:150px;
-}
-
-}
-
-@media (max-width:500px){
-
-h1{
-font-size:35px;
-}
-
-header p{
-font-size:18px;
-}
-
-.btn{
-padding:12px 24px;
-}
-
-.whatsapp{
-bottom:20px;
-right:20px;
-padding:14px 18px;
-}
-
-}
-
-</style>
-
+        @media (max-width:900px){ h1{ font-size:45px; } .cards{ flex-direction:column; align-items:center; } .card{ width:90%; } .logo{ width:200px; } }
+    </style>
 </head>
-
 <body>
 
 <header>
+    <h1>Purificadora Sargy</h1>
+    <p>Hidratación que cuida de ti</p>
+    
+    <img src="images/logo2.png" class="logo" alt="Logo Purificadora Sargy">
 
-<h1>Purificadora Sargy</h1>
-<p>Hidratación que cuida de ti</p>
-
-<img src="images/logo1.png" class="logo">
-
-<br>
-
-<a class="btn" href="https://wa.me/522226695065" target="_blank">
-Pedir por WhatsApp
-</a>
-
+    <br>
+    <a class="btn" href="https://wa.me/522226695065" target="_blank">Pedir por WhatsApp</a>
 </header>
 
 <section class="section">
-
-<h2>Agua Purificada de Alta Calidad</h2>
-<p>La mejor calidad al mejor precio para tu hogar o negocio</p>
-
-<div class="cards">
-
-<div class="card">
-<img src="images/garrafon.png">
-<h3>Venta de Garrafones</h3>
-<p>Agua purificada lista para tu hogar.</p>
-</div>
-
-<div class="card">
-<img src="images/reparto.png">
-<h3>Servicio a Domicilio</h3>
-<p>Reparto rápido y confiable.</p>
-</div>
-
-<div class="card">
-<img src="images/calidad.png">
-<h3>Máxima Calidad</h3>
-<p>Procesos avanzados de purificación.</p>
-</div>
-
-</div>
-
+    <h2>Agua Purificada de Alta Calidad</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="images/logo3.png" alt="Venta de Garrafones">
+            <h3>Venta de Garrafones</h3>
+            <p>Agua purificada lista para tu hogar.</p>
+        </div>
+        <div class="card">
+            <img src="images/logo3.png" alt="Servicio a Domicilio">
+            <h3>Servicio a Domicilio</h3>
+            <p>Reparto rápido y confiable.</p>
+        </div>
+        <div class="card">
+            <img src="images/logo3.png" alt="Máxima Calidad">
+            <h3>Máxima Calidad</h3>
+            <p>Procesos avanzados de purificación.</p>
+        </div>
+    </div>
 </section>
 
 <section class="section">
-
-<h2>Ubicación</h2>
-
-<p>
-Calle Mármol No.115<br>
-Colonia San Jacinto<br>
-Amozoc de Mota
-</p>
-
-<div class="map">
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d235.70493681310035!2d-98.06651742245056!3d19.051467498412762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1772995267985!5m2!1ses!2smx"
-width="90%"
-height="400"
-style="border:0;border-radius:20px;"
-loading="lazy">
-</iframe>
-
-</div>
-
+    <h2>Ubicación</h2>
+    <p>Calle Mármol No.115, Colonia San Jacinto, Amozoc de Mota</p>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.243504443916!2d-98.0494444!3d19.0530556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDAzJzExLjAiTiA5OMKwMDInNTguMCJX!5e0!3m2!1ses-419!2smx!4v1700000000000" 
+        width="90%" height="400" style="border:0;border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
 </section>
 
-<footer>
+<footer>Purificadora Sargy © 2026</footer>
 
-Purificadora Sargy © 2026
-
-</footer>
-
-<a class="whatsapp" href="https://wa.me/522226695065" target="_blank">
-WhatsApp
-</a>
+<a class="whatsapp" href="https://wa.me/522226695065" target="_blank">WhatsApp</a>
 
 </body>
 </html>
-
