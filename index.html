@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi Página Web</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#1e293b;
+padding:20px;
+text-align:center;
+font-size:30px;
+}
+
+nav{
+background:#334155;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:40px;
+text-align:center;
+}
+
+.galeria{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.galeria img{
+width:250px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+footer{
+background:#1e293b;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+Mi Portafolio
+</header>
+
+<nav>
+<a href="#">Inicio</a>
+<a href="#">Proyectos</a>
+<a href="#">Contacto</a>
+</nav>
+
+<section>
+
+<h2>Bienvenido a mi página</h2>
+<p>Este es mi sitio web creado con GitHub Pages.</p>
+
+</section>
+
+<section>
+
+<h2>Mis proyectos</h2>
+
+<div class="galeria">
+
+<img src="https://picsum.photos/400/300?1">
+<img src="https://picsum.photos/400/300?2">
+<img src="https://picsum.photos/400/300?3">
+<img src="https://picsum.photos/400/300?4">
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Mi página web
+</footer>
+
+</body>
+</html>
