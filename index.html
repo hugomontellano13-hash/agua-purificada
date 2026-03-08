@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,6 +20,7 @@ body{
 background:linear-gradient(130deg,#02111b,#043b4a,#0b8793);
 color:white;
 overflow-x:hidden;
+text-align:center;
 }
 
 /* FONDO ANIMADO */
@@ -29,7 +31,7 @@ position:fixed;
 width:200%;
 height:200%;
 background:radial-gradient(circle,#00e5ff33 2px, transparent 2px);
-background-size:50px 50px;
+background-size:60px 60px;
 animation:mover 20s linear infinite;
 z-index:-1;
 }
@@ -42,11 +44,10 @@ z-index:-1;
 /* HEADER */
 
 header{
-text-align:center;
 padding:120px 20px;
 }
 
-header h1{
+h1{
 font-size:60px;
 letter-spacing:4px;
 background:linear-gradient(90deg,#00e5ff,#4facfe);
@@ -87,7 +88,6 @@ transform:scale(1.1);
 
 .section{
 padding:80px 20px;
-text-align:center;
 }
 
 /* TARJETAS */
@@ -155,7 +155,57 @@ from{transform:translateY(0)}
 to{transform:translateY(-10px)}
 }
 
+/* RESPONSIVE (CELULARES Y TABLETS) */
+
+@media (max-width:900px){
+
+h1{
+font-size:45px;
+}
+
+header{
+padding:80px 20px;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
+}
+
+.card{
+width:90%;
+}
+
+.logo{
+width:150px;
+}
+
+}
+
+@media (max-width:500px){
+
+h1{
+font-size:35px;
+}
+
+header p{
+font-size:18px;
+}
+
+.btn{
+padding:12px 24px;
+}
+
+.whatsapp{
+bottom:20px;
+right:20px;
+padding:14px 18px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -165,7 +215,7 @@ to{transform:translateY(-10px)}
 <h1>Purificadora Sargy</h1>
 <p>Hidratación que cuida de ti</p>
 
-<img src="logo.png" class="logo">
+<img src="images/logo.png" class="logo">
 
 <br>
 
@@ -183,19 +233,19 @@ Pedir por WhatsApp
 <div class="cards">
 
 <div class="card">
-<img src="garrafon.jpg">
+<img src="images/garrafon.png">
 <h3>Venta de Garrafones</h3>
 <p>Agua purificada lista para tu hogar.</p>
 </div>
 
 <div class="card">
-<img src="reparto.jpg">
+<img src="images/reparto.png">
 <h3>Servicio a Domicilio</h3>
 <p>Reparto rápido y confiable.</p>
 </div>
 
 <div class="card">
-<img src="calidad.jpg">
+<img src="images/calidad.png">
 <h3>Máxima Calidad</h3>
 <p>Procesos avanzados de purificación.</p>
 </div>
