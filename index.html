@@ -3,46 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Análisis de Ventas - EDS Amozoc II</title>
+
+<title>Reporte EDS Amozoc II</title>
 
 <style>
 
-body{
-font-family: Arial, Helvetica, sans-serif;
+*{
 margin:0;
-background:#0f172a;
-color:white;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, Arial;
 }
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* FONDO FULL GAS */
+
+body::before{
+content:"FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS";
+position:fixed;
+top:0;
+left:0;
+width:200%;
+height:200%;
+font-size:120px;
+font-weight:bold;
+color:rgba(255,0,0,0.06);
+transform:rotate(-25deg);
+letter-spacing:40px;
+z-index:-1;
+}
+
+/* GRADIENTE ROJO NEGRO */
+
+body::after{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at 20% 20%, rgba(255,0,0,0.2), transparent 40%),
+radial-gradient(circle at 80% 80%, rgba(255,0,0,0.2), transparent 40%);
+z-index:-2;
+}
+
+/* HEADER */
 
 header{
 text-align:center;
-padding:40px;
-background:linear-gradient(90deg,#1e3a8a,#0ea5e9);
+padding:50px 20px;
+background:linear-gradient(90deg,#7f0000,#ff0000);
+box-shadow:0 5px 20px rgba(0,0,0,0.6);
 }
 
 header h1{
-margin:0;
-font-size:32px;
+font-size:36px;
+letter-spacing:2px;
 }
+
+header p{
+opacity:0.9;
+margin-top:5px;
+}
+
+/* CONTENEDOR */
 
 .container{
 max-width:1100px;
 margin:auto;
-padding:30px;
+padding:40px 20px;
 }
 
+/* TARJETAS */
+
 .card{
-background:#1e293b;
-padding:25px;
+background:rgba(15,15,15,0.9);
+border:1px solid rgba(255,0,0,0.3);
 border-radius:10px;
-margin-bottom:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+padding:30px;
+margin-bottom:30px;
+box-shadow:0 10px 40px rgba(0,0,0,0.7);
+backdrop-filter:blur(6px);
 }
 
 .card h2{
-margin-top:0;
-color:#38bdf8;
+color:#ff3b3b;
+margin-bottom:15px;
 }
+
+.card p{
+line-height:1.6;
+margin-bottom:12px;
+}
+
+/* ESTADÍSTICAS */
 
 .stats{
 display:grid;
@@ -52,67 +112,84 @@ margin-top:20px;
 }
 
 .stat{
-background:#0f172a;
+background:black;
+border:1px solid rgba(255,0,0,0.3);
 padding:20px;
-border-radius:10px;
 text-align:center;
-border:1px solid #334155;
+border-radius:8px;
 }
 
 .stat h3{
-margin:0;
-font-size:16px;
-color:#94a3b8;
+color:#bbb;
+font-size:15px;
 }
 
 .stat p{
-font-size:22px;
-margin:10px 0 0 0;
+font-size:26px;
+margin-top:5px;
+color:#ff3b3b;
+font-weight:bold;
 }
 
+/* GRÁFICA */
+
 .graph{
+margin-top:20px;
 text-align:center;
-margin-top:25px;
 }
 
 .graph img{
 max-width:100%;
-border-radius:10px;
-border:2px solid #334155;
+border-radius:8px;
+border:2px solid rgba(255,0,0,0.4);
 }
 
+/* BOTÓN */
+
 button{
-background:#0ea5e9;
+margin-top:25px;
+background:#ff0000;
 border:none;
-padding:12px 20px;
-border-radius:6px;
+padding:14px 24px;
+color:white;
 font-size:16px;
+border-radius:6px;
 cursor:pointer;
-margin-top:20px;
 }
 
 button:hover{
-background:#0284c7;
+background:#cc0000;
 }
 
-footer{
-text-align:center;
-padding:20px;
-color:#94a3b8;
-}
+/* IMPRESIÓN */
 
 @media print{
-button{
-display:none;
-}
+
 body{
 background:white;
 color:black;
 }
-.card{
-box-shadow:none;
-border:1px solid #ccc;
+
+body::before,
+body::after{
+display:none;
 }
+
+.card{
+border:1px solid #ccc;
+box-shadow:none;
+}
+
+button{
+display:none;
+}
+
+}
+
+footer{
+text-align:center;
+padding:25px;
+opacity:0.6;
 }
 
 </style>
@@ -121,7 +198,7 @@ border:1px solid #ccc;
 <body>
 
 <header>
-<h1>Análisis Comparativo de Ventas</h1>
+<h1>ANÁLISIS COMPARATIVO DE VENTAS</h1>
 <p>EDS Amozoc II</p>
 </header>
 
@@ -129,42 +206,49 @@ border:1px solid #ccc;
 
 <div class="card">
 
-<h2>Resumen General</h2>
+<h2>Resumen del Análisis</h2>
 
 <p>
-Durante la primera semana de marzo, la EDS Amozoc II registró un promedio general de <b>3,414 litros vendidos</b>. 
-La distribución fue de <b>2,486 litros de Magna</b>, <b>563 litros de Premium</b> y <b>487 litros de diésel</b>.
+Durante la primera semana de marzo, la EDS Amozoc II registró un promedio general de 
+<strong>3,414 litros vendidos</strong>. La distribución fue de 
+<strong>2,486 litros de Magna</strong>, 
+<strong>563 litros de Premium</strong> y 
+<strong>487 litros de diésel</strong>.
 </p>
 
 <p>
 Al compararlo con la primera semana de febrero, donde el promedio general fue de 
-<b>3,108.92 litros</b>, se observa un <b>incremento de 305.08 litros</b>.
+<strong>3,108.92 litros</strong>, se observa un incremento de 
+<strong>305.08 litros</strong>.
 </p>
 
 <p>
-En febrero, Magna tuvo <b>2,752.61 litros</b>, Premium <b>30.23 litros</b> y diésel <b>409.86 litros</b>.
+En febrero, Magna tuvo <strong>2,752.61 litros</strong>, Premium 
+<strong>30.23 litros</strong> y diésel 
+<strong>409.86 litros</strong>.
 </p>
 
 <p>
 Comparación por producto:
 </p>
 
-<ul>
-<li>Magna: bajó <b>266.61 litros</b>.</li>
-<li>Premium: subió <b>532.77 litros</b>.</li>
-<li>Diésel: subió <b>77.14 litros</b>.</li>
-</ul>
+<p>
+Magna bajó <strong>266.61 litros</strong>, Premium subió 
+<strong>532.77 litros</strong> y diésel aumentó 
+<strong>77.14 litros</strong>.
+</p>
 
 <p>
-Las ventas generales aumentaron; sin embargo, <b>el desabasto de diésel está afectando y sigue afectando el desempeño</b>, 
-ya que desde el <b>7 de marzo</b> no se cuenta con este producto.
+Las ventas generales aumentaron; sin embargo, el desabasto de diésel 
+<strong>afecta y sigue afectando el desempeño</strong>, ya que desde el 
+<strong>7 de marzo</strong> no se cuenta con este producto.
 </p>
 
 </div>
 
 <div class="card">
 
-<h2>Datos de Promedio</h2>
+<h2>Promedios Generales</h2>
 
 <div class="stats">
 
@@ -179,7 +263,7 @@ ya que desde el <b>7 de marzo</b> no se cuenta con este producto.
 </div>
 
 <div class="stat">
-<h3>Incremento</h3>
+<h3>Diferencia</h3>
 <p>+305.08 L</p>
 </div>
 
@@ -195,8 +279,8 @@ ya que desde el <b>7 de marzo</b> no se cuenta con este producto.
 <img src="grafica.png" alt="Gráfica de ventas">
 </div>
 
-<p style="text-align:center;color:#94a3b8;">
-Reemplaza la imagen "grafica.png" por tu gráfica.
+<p style="opacity:0.6;margin-top:10px;">
+Reemplaza "grafica.png" por tu gráfica.
 </p>
 
 </div>
@@ -206,7 +290,7 @@ Reemplaza la imagen "grafica.png" por tu gráfica.
 </div>
 
 <footer>
-Reporte de análisis semanal
+Reporte semanal de análisis
 </footer>
 
 </body>
