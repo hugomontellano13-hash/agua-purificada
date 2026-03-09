@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Ventas - EDS Amozoc II</title>
 
-<title>Reporte EDS Amozoc II</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 
@@ -16,360 +17,191 @@ font-family:Segoe UI, Arial;
 }
 
 body{
-
-background:
-linear-gradient(135deg,#000000,#0a0a0a,#1a0000);
-
+background:linear-gradient(135deg,#000,#0a0a0a,#1a0000);
 color:white;
 overflow-x:hidden;
 }
 
-/* PATRÓN FULL GAS */
+/* Fondo FULL GAS */
 
 body::before{
-
-content:"FULL GAS  FULL GAS  FULL GAS  FULL GAS  FULL GAS  FULL GAS  FULL GAS";
-
+content:"FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS FULL GAS";
 position:fixed;
-
 top:0;
 left:0;
-
 width:300%;
 height:300%;
-
 font-size:110px;
-
 color:rgba(255,0,0,0.05);
-
 transform:rotate(-30deg);
-
 letter-spacing:35px;
-
 animation:mover 35s linear infinite;
-
 pointer-events:none;
-
 }
 
 @keyframes mover{
-
 0%{transform:translateX(0) rotate(-30deg);}
 100%{transform:translateX(-500px) rotate(-30deg);}
-
 }
 
-/* HEADER */
+/* Header */
 
 header{
-
 text-align:center;
-
 padding:60px 20px;
-
 background:linear-gradient(90deg,#7a0000,#ff0000);
-
 box-shadow:0 10px 40px rgba(0,0,0,0.7);
-
 }
 
 header h1{
-
-font-size:38px;
-
+font-size:36px;
 letter-spacing:3px;
-
 }
 
 header p{
-
 opacity:.9;
-
 margin-top:6px;
-
-font-size:18px;
-
 }
 
-/* CONTENEDOR */
+/* Contenedor */
 
 .container{
-
 max-width:1200px;
-
 margin:auto;
-
 padding:40px 20px;
-
 }
 
-/* TARJETAS */
+/* Tarjetas */
 
 .card{
-
 background:rgba(20,20,20,0.75);
-
 border:1px solid rgba(255,0,0,0.25);
-
 backdrop-filter:blur(10px);
-
 padding:30px;
-
 border-radius:12px;
-
 margin-bottom:30px;
-
 box-shadow:0 20px 50px rgba(0,0,0,0.8);
-
-transition:.3s;
-
-}
-
-.card:hover{
-
-transform:translateY(-5px);
-
 }
 
 .card h2{
-
 color:#ff3c3c;
-
 margin-bottom:15px;
-
 }
 
-/* TEXTO */
-
-.card p{
-
-line-height:1.7;
-
-margin-bottom:10px;
-
-}
-
-/* DASHBOARD */
+/* Estadísticas */
 
 .stats{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
 gap:20px;
-
-margin-top:25px;
-
+margin-top:20px;
 }
 
 .stat{
-
 background:black;
-
 border:1px solid rgba(255,0,0,0.4);
-
 padding:25px;
-
 border-radius:10px;
-
 text-align:center;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.stat::after{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:3px;
-
-background:#ff0000;
-
 }
 
 .stat h3{
-
 color:#bbb;
-
 font-size:15px;
-
 }
 
 .stat p{
-
-font-size:30px;
-
-margin-top:8px;
-
+font-size:32px;
+margin-top:10px;
 color:#ff4d4d;
-
 font-weight:bold;
-
 }
 
-/* GRÁFICA */
+/* Flechas */
 
-.graph{
+.up{color:#00ff88;font-weight:bold;}
+.down{color:#ff5555;font-weight:bold;}
 
-text-align:center;
+/* Barras de rendimiento */
 
-margin-top:25px;
-
+.progress{
+background:#222;
+border-radius:6px;
+height:12px;
+margin-top:8px;
+overflow:hidden;
 }
 
-.graph img{
-
-max-width:100%;
-
-border-radius:10px;
-
-border:2px solid rgba(255,0,0,0.5);
-
-box-shadow:0 10px 30px rgba(0,0,0,0.8);
-
+.progress-bar{
+height:100%;
+background:#ff0000;
 }
 
-/* BOTÓN */
+/* Alerta */
+
+.alert{
+background:#330000;
+border:1px solid #ff0000;
+padding:15px;
+border-radius:8px;
+margin-top:15px;
+color:#ff9999;
+}
+
+/* Gráfica */
+
+.chart-container{
+height:400px;
+}
+
+/* Botón */
 
 button{
-
 margin-top:25px;
-
 background:linear-gradient(90deg,#ff0000,#b30000);
-
 border:none;
-
 padding:14px 26px;
-
 font-size:16px;
-
 border-radius:6px;
-
 cursor:pointer;
-
 color:white;
-
-box-shadow:0 5px 20px rgba(255,0,0,0.4);
-
 }
 
-button:hover{
-
-transform:scale(1.05);
-
-}
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-
-padding:30px;
-
-opacity:0.6;
-
-}
-
-/* IMPRESIÓN */
+/* Impresión */
 
 @media print{
 
 body{
-
 background:white;
-
 color:black;
-
 }
 
 body::before{
-
 display:none;
-
-}
-
-.card{
-
-box-shadow:none;
-
-border:1px solid #ccc;
-
 }
 
 button{
-
 display:none;
+}
 
+.card{
+border:1px solid #ccc;
+box-shadow:none;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-
-<h1>ANÁLISIS COMPARATIVO DE VENTAS</h1>
-
+<h1>DASHBOARD DE VENTAS</h1>
 <p>EDS Amozoc II</p>
-
 </header>
 
 <div class="container">
-
-<div class="card">
-
-<h2>Resumen del análisis</h2>
-
-<p>
-Durante la primera semana de marzo, la EDS Amozoc II registró un promedio general de 
-<strong>3,414 litros vendidos</strong>. La distribución fue de 
-<strong>2,486 litros de Magna</strong>, 
-<strong>563 litros de Premium</strong> y 
-<strong>487 litros de diésel</strong>.
-</p>
-
-<p>
-Al compararlo con la primera semana de febrero, donde el promedio general fue de 
-<strong>3,108.92 litros</strong>, se observa un incremento de 
-<strong>305.08 litros</strong>.
-</p>
-
-<p>
-En febrero, Magna tuvo <strong>2,752.61 litros</strong>, Premium 
-<strong>30.23 litros</strong> y diésel 
-<strong>409.86 litros</strong>.
-</p>
-
-<p>
-Magna bajó <strong>266.61 litros</strong>, Premium subió 
-<strong>532.77 litros</strong> y diésel aumentó 
-<strong>77.14 litros</strong>.
-</p>
-
-<p>
-Las ventas generales aumentaron; sin embargo, el desabasto de diésel 
-<strong>afecta y sigue afectando el desempeño</strong>, ya que desde el 
-<strong>7 de marzo</strong> no se cuenta con este producto.
-</p>
-
-</div>
 
 <div class="card">
 
@@ -379,16 +211,17 @@ Las ventas generales aumentaron; sin embargo, el desabasto de diésel
 
 <div class="stat">
 <h3>Promedio Marzo</h3>
-<p>3,414 L</p>
+<p id="marzo">0</p>
+<span class="up">▲ +305.08</span>
 </div>
 
 <div class="stat">
 <h3>Promedio Febrero</h3>
-<p>3,108.92 L</p>
+<p id="febrero">0</p>
 </div>
 
 <div class="stat">
-<h3>Incremento</h3>
+<h3>Variación</h3>
 <p>+305.08 L</p>
 </div>
 
@@ -398,15 +231,36 @@ Las ventas generales aumentaron; sin embargo, el desabasto de diésel
 
 <div class="card">
 
-<h2>Gráfica de ventas</h2>
+<h2>Rendimiento por producto</h2>
 
-<div class="graph">
-<img src="grafica.png">
+<p>Magna (disminución)</p>
+<div class="progress">
+<div class="progress-bar" style="width:70%"></div>
 </div>
 
-<p style="opacity:.6;margin-top:10px;">
-Sustituye "grafica.png" por tu gráfica.
-</p>
+<p>Premium (incremento)</p>
+<div class="progress">
+<div class="progress-bar" style="width:95%"></div>
+</div>
+
+<p>Diésel</p>
+<div class="progress">
+<div class="progress-bar" style="width:60%"></div>
+</div>
+
+<div class="alert">
+⚠ Desabasto de diésel desde el 7 de marzo. Esto afecta actualmente el desempeño de ventas.
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Gráfica comparativa</h2>
+
+<div class="chart-container">
+<canvas id="graficaVentas"></canvas>
+</div>
 
 </div>
 
@@ -414,11 +268,71 @@ Sustituye "grafica.png" por tu gráfica.
 
 </div>
 
-<footer>
+<script>
 
-Reporte semanal de análisis
+/* CONTADORES ANIMADOS */
 
-</footer>
+function contador(id,valor){
+
+let elemento=document.getElementById(id)
+let inicio=0
+
+let intervalo=setInterval(()=>{
+
+inicio+=50
+
+if(inicio>=valor){
+inicio=valor
+clearInterval(intervalo)
+}
+
+elemento.textContent=inicio.toLocaleString()+" L"
+
+},20)
+
+}
+
+contador("marzo",3414)
+contador("febrero",3108)
+
+/* GRÁFICA */
+
+const ctx=document.getElementById("graficaVentas")
+
+new Chart(ctx,{
+
+type:"bar",
+
+data:{
+labels:["Magna","Premium","Diésel","Promedio"],
+datasets:[
+{
+label:"Febrero",
+data:[2752.61,30.23,409.86,3108.92],
+backgroundColor:"rgba(180,180,180,0.6)"
+},
+{
+label:"Marzo",
+data:[2486,563,487,3414],
+backgroundColor:"rgba(255,0,0,0.7)"
+}
+]
+},
+
+options:{
+responsive:true,
+plugins:{
+legend:{labels:{color:"white"}}
+},
+scales:{
+x:{ticks:{color:"white"}},
+y:{ticks:{color:"white"}}
+}
+}
+
+})
+
+</script>
 
 </body>
 </html>
