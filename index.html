@@ -3,144 +3,595 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿para la más guapa de la uni? ❤️</title>
+    <title>Ge'lifiesta | Gelatinas Gourmet de Diseño</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #ffe6e6;
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef9fb 0%, #fff4f9 100%);
+            color: #2d2d2d;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* TEXTO MÓVIL EN EL FONDO - NUEVO */
+        .fondo-movil {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Para que no interfiera con clics */
+            z-index: 0;
             overflow: hidden;
+            opacity: 0.1; /* Muy sutil, como marca de agua */
+        }
+
+        .texto-vertical {
+            position: absolute;
+            font-size: 8vw; /* Tamaño responsivo */
+            font-weight: 800;
+            color: #ff4080;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            transform: rotate(-90deg) translateY(-50%); /* Rotación vertical */
+            transform-origin: left top;
+            animation: moverVertical 20s linear infinite;
+            text-shadow: 0 0 10px rgba(255, 64, 128, 0.3);
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        /* Múltiples líneas para mejor efecto */
+        .texto-vertical:nth-child(1) {
+            top: 10%;
+            left: 2%;
+            animation-delay: 0s;
+            font-size: 10vw;
+            opacity: 0.5;
+        }
+
+        .texto-vertical:nth-child(2) {
+            top: 20%;
+            left: 15%;
+            animation-delay: -5s;
+            font-size: 12vw;
+            opacity: 0.4;
+            color: #ff85c1;
+        }
+
+        .texto-vertical:nth-child(3) {
+            top: 30%;
+            left: 25%;
+            animation-delay: -10s;
+            font-size: 9vw;
+            opacity: 0.3;
+            color: #e75480;
+        }
+
+        .texto-vertical:nth-child(4) {
+            top: 40%;
+            left: 5%;
+            animation-delay: -15s;
+            font-size: 14vw;
+            opacity: 0.2;
+            color: #ff69a5;
+        }
+
+        .texto-vertical:nth-child(5) {
+            top: 50%;
+            left: 20%;
+            animation-delay: -7s;
+            font-size: 11vw;
+            opacity: 0.35;
+            color: #ff4080;
+        }
+
+        @keyframes moverVertical {
+            0% {
+                transform: rotate(-90deg) translateY(100vh) translateX(-50%);
+            }
+            100% {
+                transform: rotate(-90deg) translateY(-100vh) translateX(-50%);
+            }
+        }
+
+        /* Ajuste para que el contenido principal esté sobre el fondo */
+        .modern-header, .container, .decoracion-puntos, footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estilos Modernos y Elegantes (sin cambios) */
+        .modern-header {
+            background: linear-gradient(145deg, #ff69a5 0%, #ff4080 100%);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 64, 128, 0.3);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .modern-header::before {
+            content: "✦";
+            font-size: 15rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: -50px;
+            right: -30px;
+            transform: rotate(15deg);
+            font-family: serif;
+        }
+
+        .modern-header::after {
+            content: "✧";
+            font-size: 12rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            bottom: -70px;
+            left: -30px;
+            transform: rotate(-10deg);
+            font-family: serif;
+        }
+
+        .logo-text {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 4px 4px 0 #d43f6b;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-text span {
+            font-size: 2rem;
+            display: block;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 0 #d43f6b;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            position: relative;
         }
 
         .container {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            padding: 0 20px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Tarjetas de Servicios - Glassmorphism */
+        .servicios-modernos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .card-moderna {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 35px 25px;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(255, 64, 128, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            color: #d63384;
-            font-size: 2.5rem;
+        .card-moderna::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff85c1, #ff4080);
         }
 
-        #meme-img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
+        .card-moderna:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(255, 64, 128, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .card-moderna h3 {
+            color: #ff4080;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-moderna p {
+            color: #4a4a4a;
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
         }
 
-        .buttons {
+        .highlight-moderno {
+            background: linear-gradient(145deg, #ff85c1, #ff4080);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(255, 64, 128, 0.3);
+            border: 2px solid white;
+        }
+
+        /* Títulos de sección */
+        .titulo-seccion {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #ff4080;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 0 #ffe1f0;
+            position: relative;
+        }
+
+        .titulo-seccion::after {
+            content: "★";
+            font-size: 1.5rem;
+            color: #ff85c1;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .subtitulo-seccion {
+            text-align: center;
+            color: #ff85c1;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Galería Mejorada */
+        .galeria-grid-moderna {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .foto-cliente-moderna {
+            background: white;
+            border-radius: 35px 35px 25px 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(255, 64, 128, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 133, 193, 0.3);
+            position: relative;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .foto-cliente-moderna:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 50px rgba(255, 64, 128, 0.3);
+            background: white;
+        }
+
+        .imagen-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .foto-cliente-moderna img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .foto-cliente-moderna:hover img {
+            transform: scale(1.1);
+        }
+
+        .info-cliente-moderna {
+            padding: 25px;
+            background: transparent;
+            position: relative;
+        }
+
+        .info-cliente-moderna h4 {
+            color: #ff4080;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .p-desc-moderna {
+            color: #ff85c1;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
             display: flex;
-            gap: 20px;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 5px;
         }
 
-        button {
-            padding: 15px 30px;
+        .p-desc-moderna::before {
+            content: "✨";
             font-size: 1.2rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            transition: all 0.2s ease;
         }
 
-        #btn-si {
-            background-color: #28a745;
+        .testimonio-moderno {
+            font-style: italic;
+            color: #5a5a5a;
+            background: #fef4f9;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            border-left: 4px solid #ff85c1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .testimonio-moderno b {
+            color: #ff4080;
+            font-style: normal;
+        }
+
+        /* Botón de Contacto Mejorado */
+        .contacto-moderno {
+            margin-top: 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff4080, #ff69a5);
             color: white;
+            padding: 60px 30px;
+            border-radius: 50px 50px 30px 30px;
+            box-shadow: 0 30px 50px rgba(255, 64, 128, 0.4);
+            position: relative;
+            overflow: hidden;
         }
 
-        #btn-no {
-            background-color: #dc3545;
+        .contacto-moderno::before {
+            content: "🧁🎂🍰";
+            font-size: 8rem;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            opacity: 0.1;
+            transform: rotate(-10deg);
+        }
+
+        .contacto-moderno h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 3px 3px 0 #b32e5a;
+            position: relative;
+        }
+
+        .whatsapp-btn-moderno {
+            background: #25d366;
             color: white;
+            padding: 20px 50px;
+            text-decoration: none;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 20px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            border: 3px solid white;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Clase para el éxito */
-        .hidden {
-            display: none;
+        .whatsapp-btn-moderno:hover {
+            background: #20b859;
+            transform: scale(1.05);
+            box-shadow: 0 30px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn-moderno i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            vertical-align: middle;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2.8rem;
+            }
+            
+            .logo-text span {
+                font-size: 1.2rem;
+            }
+            
+            .titulo-seccion {
+                font-size: 2rem;
+            }
+            
+            .imagen-wrapper {
+                height: 250px;
+            }
+            
+            .contacto-moderno h2 {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-btn-moderno {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .modern-header {
+                clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+            }
+
+            .texto-vertical {
+                font-size: 15vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 2.2rem;
+            }
+            
+            .card-moderna h3 {
+                font-size: 1.5rem;
+            }
+
+            .texto-vertical {
+                font-size: 18vw;
+                letter-spacing: 5px;
+            }
+        }
+
+        /* Efectos adicionales */
+        .decoracion-puntos {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 133, 193, 0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 70%, rgba(255, 64, 128, 0.05) 0%, transparent 20%);
+            z-index: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="main-card">
-        <img id="meme-img" src="https://media.tenor.com/ICV9YshfS_AAAAAi/cat-puss-in-boots.gif" alt="Meme triste">
-        <h1 id="pregunta">¿QUIERES SALIR CONMIGO?</h1>
-        
-        <div class="buttons">
-            <button id="btn-si">Sí</button>
-            <button id="btn-no">No</button>
+<!-- TEXTO MÓVIL EN EL FONDO - NUEVO -->
+<div class="fondo-movil">
+    <div class="texto-vertical">Ge'lifiesta ✦</div>
+    <div class="texto-vertical">Ge'lifiesta ✦</div>
+    <div class="texto-vertical">Ge'lifiesta ✦</div>
+    <div class="texto-vertical">Ge'lifiesta ✦</div>
+    <div class="texto-vertical">Ge'lifiesta ✦</div>
+</div>
+
+<div class="decoracion-puntos"></div>
+
+<header class="modern-header">
+    <h1 class="logo-text">Ge'lifiesta<span>Gourmet</span></h1>
+    <p class="tagline">Gelatina Gourmet & Repostería de Diseño</p>
+</header>
+
+<div class="container">
+    <!-- Servicios Modernizados -->
+    <div class="servicios-modernos">
+        <div class="card-moderna">
+            <h3>🎨 Impresiones Comestibles</h3>
+            <p>Personaliza tus creaciones con nuestras impresiones de alta calidad.</p>
+            <p><span class="highlight-moderno">Opciones: Hoja de Arroz y Azúcar</span></p>
+        </div>
+        <div class="card-moderna">
+            <h3>🍰 Gelatinas Gourmet</h3>
+            <p>Elaboradas con ingredientes premium y diseños únicos.</p>
+            <p><span class="highlight-moderno">Temática: ¡Cualquier personaje!</span></p>
         </div>
     </div>
 
-    <div class="container hidden" id="success-message">
-        <img src="https://media.tenor.com/u_pW-zB0yCAAAAAi/cat-love.gif" alt="Meme feliz" style="width: 300px; border-radius: 15px;">
-        <h1 style="color: #d63384;">¡Sabía que dirías que sí! ❤️</h1>
-        <p>SALIMOS ESTE MIERCOLES PASO POR TI! 😍</p>
+    <!-- Títulos de Galería -->
+    <h2 class="titulo-seccion">Diseños personalizados que encantan</h2>
+    <p class="subtitulo-seccion">Nuestros trabajos más recientes</p>
+    
+    <!-- Galería Mejorada -->
+    <div class="galeria-grid-moderna">
+        <!-- Foto 1 -->
+        <div class="foto-cliente-moderna">
+            <div class="imagen-wrapper">
+                <img src="image_1.png" alt="Homenaje al 18 cumpleaños">
+            </div>
+            <div class="info-cliente-moderna">
+                <h4>🎂 Homenaje al 18 cumpleaños</h4>
+                <p class="p-desc-moderna">Kit completo con gelatina central de Snoopy y paletas individuales a juego.</p>
+                <div class="testimonio-moderno">
+                    "¡La mesa de dulces quedó espectacular con este diseño! La impresión es súper nítida y el sabor increíble. ¡Gracias!" - <b>Cumpleañera Feliz</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="foto-cliente-moderna">
+            <div class="imagen-wrapper">
+                <img src="image_2.png" alt="Aventura Saiyajin">
+            </div>
+            <div class="info-cliente-moderna">
+                <h4>⚡ Aventura Saiyajin para los 9 meses</h4>
+                <p class="p-desc-moderna">Diseño de Dragon Ball Z con gelatina de Goku y paletas 'Esferas del Dragón'.</p>
+                <div class="testimonio-moderno">
+                    "Buscábamos algo único para el cumple y Ge'lifiesta superó las expectativas. Las esferas del dragón fueron la sensación." - <b>Papás de Thiago</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="foto-cliente-moderna">
+            <div class="imagen-wrapper">
+                <img src="image_3.png" alt="Magia en la Fiesta con Bluey">
+            </div>
+            <div class="info-cliente-moderna">
+                <h4>🐶 Magia en la Fiesta con Bluey</h4>
+                <p class="p-desc-moderna">Gelatina principal de Bluey acompañada de paletas con todos los personajes de la serie.</p>
+                <div class="testimonio-moderno">
+                    "Mi hijo no podía creerlo cuando vio su gelatina de Bluey. ¡Estaba todo perfecto y muy detallado! Súper recomendado." - <b>Mamá de Mati</b>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        const btnSi = document.getElementById('btn-si');
-        const btnNo = document.getElementById('btn-no');
-        const memeImg = document.getElementById('meme-img');
-        const mainCard = document.getElementById('main-card');
-        const successMessage = document.getElementById('success-message');
-        const pregunta = document.getElementById('pregunta');
+    <!-- Contacto Mejorado -->
+    <div class="contacto-moderno">
+        <h2>¿Tienes un evento? 🎉</h2>
+        <a href="https://wa.me/522226038991" class="whatsapp-btn-moderno">
+            <i>📱</i> Pedir por WhatsApp
+        </a>
+    </div>
+</div>
 
-        let siFontSize = 1.2; // Tamaño inicial en rem
-        let noClickCount = 0;
+<!-- Decoración adicional (opcional) -->
+<div style="text-align: center; padding: 20px; color: #ff85c1; font-size: 0.9rem; position: relative; z-index: 2;">
+    ✦ Gelatinas Gourmet con diseño personalizado ✦
+</div>
 
-        const frasesNo = [
-            "¿Segura que no quieres?",
-            "Piénsalo bien...",
-            "Pero te voy a ver a tu casa :c",
-            "Entiendo, es tu decisión :c",
-            "No te arrepentirás, ¡lo juro!",
-            "¡Solo dale a SÍ!",
-            "¿Con quién vas a salir? 🤨",
-            "Voy a llorar...",
-            "Ya ni me hables."
-        ];
-
-        const memesTristes = [
-            "https://media.tenor.com/Y5V97G6O7m0AAAAi/sad-cat.gif",
-            "https://media.tenor.com/0v8XoW9n3pIAAAAi/cat-sad.gif",
-            "https://media.tenor.com/zS_T6Yq6_m0AAAAi/crying-cat.gif"
-        ];
-
-        btnNo.addEventListener('click', () => {
-            // Aumentar tamaño del botón SÍ
-            siFontSize += 2; 
-            btnSi.style.fontSize = siFontSize + "rem";
-            btnSi.style.padding = (siFontSize * 10) + "px " + (siFontSize * 20) + "px";
-
-            // Cambiar texto del botón NO
-            if (noClickCount < frasesNo.length) {
-                btnNo.innerText = frasesNo[noClickCount];
-                // Cambiar meme aleatoriamente
-                memeImg.src = memesTristes[Math.floor(Math.random() * memesTristes.length)];
-            } else {
-                btnNo.innerText = "Ya no tienes opción 😎";
-                btnNo.style.display = "none"; // Desaparece el botón No después de mucho
-            }
-
-            noClickCount++;
-        });
-
-        btnSi.addEventListener('click', () => {
-            mainCard.classList.add('hidden');
-            successMessage.classList.remove('hidden');
-        });
-    </script>
 </body>
 </html>
-
-
 
