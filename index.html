@@ -3,187 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reporte EDS Amozoc II</title>
+<title>EDS Amozoc II | Análisis de Ventas</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 body {
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #2d1a1a 100%);
-    color: #fff;
+    background: #0a0c0f;
+    color: #eaeef2;
     overflow-x: hidden;
     position: relative;
-    min-height: 100vh;
 }
 
-/* PATRÓN FULL GAS MEJORADO */
+/* Fondo con efecto de profundidad */
 body::before {
-    content: "⚡ FULL GAS ⚡ FULL GAS ⚡ FULL GAS ⚡ FULL GAS ⚡ FULL GAS ⚡";
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
-    width: 300%;
-    height: 300%;
-    font-size: 140px;
-    font-weight: 800;
-    color: rgba(255, 30, 30, 0.03);
-    transform: rotate(-25deg) scale(1.5);
-    letter-spacing: 20px;
-    white-space: nowrap;
-    animation: moverPatron 40s linear infinite;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(180, 0, 0, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(200, 0, 0, 0.05) 0%, transparent 35%),
+                repeating-linear-gradient(45deg, rgba(255, 30, 30, 0.02) 0px, rgba(255, 30, 30, 0.02) 2px, transparent 2px, transparent 8px);
     pointer-events: none;
     z-index: -1;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
 }
 
-@keyframes moverPatron {
-    0% { transform: translateX(0) rotate(-25deg) scale(1.5); }
-    100% { transform: translateX(-800px) rotate(-25deg) scale(1.5); }
-}
-
-/* HEADER MEJORADO */
+/* Header cinematográfico */
 header {
-    text-align: center;
-    padding: 70px 20px;
-    background: linear-gradient(135deg, #8b0000, #ff1a1a, #cc0000);
     position: relative;
+    background: linear-gradient(165deg, #0b0505 0%, #2d0a0a 40%, #8b1a1a 80%, #ff3a3a 100%);
+    padding: 100px 30px;
+    text-align: center;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(255, 0, 0, 0.3);
-    border-bottom: 3px solid #ff4d4d;
+    border-bottom: 4px solid #ff4d4d;
+    box-shadow: 0 25px 40px -15px rgba(255, 0, 0, 0.5);
 }
 
 header::before {
     content: "";
     position: absolute;
     top: -50%;
-    left: -50%;
-    width: 200%;
+    left: -10%;
+    width: 120%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    transform: rotate(45deg);
-    animation: brilloHeader 15s linear infinite;
+    background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255, 255, 255, 0.03) 40px, rgba(255, 255, 255, 0.03) 80px);
+    transform: rotate(35deg);
+    animation: deslizarLuces 15s linear infinite;
 }
 
-@keyframes brilloHeader {
-    0% { transform: rotate(45deg) translateY(0); }
-    100% { transform: rotate(45deg) translateY(50px); }
+@keyframes deslizarLuces {
+    0% { transform: rotate(35deg) translateX(-30%); }
+    100% { transform: rotate(35deg) translateX(30%); }
 }
 
 header h1 {
-    font-size: 44px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+    font-size: clamp(32px, 6vw, 58px);
     font-weight: 800;
-    text-shadow: 3px 3px 0 #4a0000, 5px 5px 0 rgba(0,0,0,0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5), 0 5px 15px rgba(255,0,0,0.4), 0 8px 25px rgba(255,0,0,0.3);
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    animation: aparecerTitulo 1.2s ease-out;
+}
+
+@keyframes aparecerTitulo {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 header p {
-    opacity: 0.95;
-    margin-top: 10px;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 300;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-    position: relative;
-    z-index: 1;
-}
-
-/* CONTENEDOR PRINCIPAL */
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 40px 25px;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 5px black;
+    margin-top: 15px;
     position: relative;
     z-index: 2;
+    backdrop-filter: blur(5px);
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 100, 100, 0.5);
 }
 
-/* TARJETAS MEJORADAS */
-.card {
-    background: rgba(15, 15, 25, 0.85);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 60, 60, 0.3);
-    border-radius: 20px;
-    padding: 35px;
-    margin-bottom: 35px;
-    box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 0, 0, 0.1) inset;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Contenedor principal */
+.container {
+    max-width: 1400px;
+    margin: -40px auto 0;
+    padding: 0 30px 50px;
     position: relative;
-    overflow: hidden;
+    z-index: 5;
 }
 
-.card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background: linear-gradient(to bottom, #ff0000, #ff6a6a, #ff0000);
-    box-shadow: 0 0 20px #ff0000;
+/* Tarjetas con efecto 3D */
+.card {
+    background: rgba(18, 22, 28, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 70, 70, 0.2);
+    border-radius: 32px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.8), 
+                0 0 0 1px rgba(255, 70, 70, 0.1) inset,
+                0 10px 30px -10px rgba(255, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    transform: translateY(0);
 }
 
 .card:hover {
     transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 35px 60px -10px rgba(255, 0, 0, 0.4), 0 0 0 1px rgba(255, 100, 100, 0.3) inset;
-    border-color: rgba(255, 100, 100, 0.5);
+    box-shadow: 0 40px 70px -15px #8b0000, 
+                0 0 0 2px rgba(255, 80, 80, 0.3) inset;
+    border-color: rgba(255, 80, 80, 0.4);
+}
+
+/* Efecto de brillo en el borde */
+.card::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 80, 80, 0.3), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.card:hover::after {
+    opacity: 1;
 }
 
 .card h2 {
-    color: #ff4d4d;
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 32px;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-left: 4px solid #ff0000;
-    padding-left: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 25px;
+    color: #ff6a6a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid rgba(255, 80, 80, 0.3);
+    padding-bottom: 15px;
+}
+
+.card h2::before {
+    content: "⛽";
+    font-size: 36px;
+    filter: drop-shadow(0 0 8px #ff0000);
 }
 
 .card p {
-    color: #e0e0e0;
+    color: #cdd9e5;
+    font-size: 17px;
     line-height: 1.8;
-    margin-bottom: 15px;
-    font-size: 16px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    margin-bottom: 18px;
+    font-weight: 300;
 }
 
 .card strong {
-    color: #ff6a6a;
+    color: #ff8a8a;
     font-weight: 700;
-    background: rgba(255, 0, 0, 0.1);
-    padding: 2px 8px;
-    border-radius: 4px;
-    border-left: 2px solid #ff0000;
+    background: linear-gradient(90deg, rgba(255, 60, 60, 0.15), transparent);
+    padding: 2px 12px;
+    border-radius: 20px;
+    border-left: 3px solid #ff4d4d;
 }
 
-/* DASHBOARD MEJORADO */
+/* Grid de estadísticas premium */
 .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    margin: 30px 0 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin: 40px 0 30px;
 }
 
 .stat {
-    background: linear-gradient(145deg, #0f0f1a, #1a1a2a);
-    border: 1px solid rgba(255, 60, 60, 0.25);
-    border-radius: 16px;
-    padding: 30px 20px;
+    background: linear-gradient(145deg, #10161e, #151e28);
+    border-radius: 28px;
+    padding: 35px 20px;
     text-align: center;
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    box-shadow: 0 20px 30px -15px black;
+    transition: all 0.4s;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px -10px rgba(255, 0, 0, 0.2);
+}
+
+.stat:hover {
+    border-color: #ff4d4d;
+    box-shadow: 0 25px 40px -15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.3);
+    transform: scale(1.02);
 }
 
 .stat::before {
@@ -191,241 +217,246 @@ header p {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #ff0000, #ff6a6a, #ff0000, transparent);
-    animation: destelloBorde 3s linear infinite;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, #ff4d4d, #ffb3b3, #ff4d4d, transparent);
+    animation: correrBorde 3s linear infinite;
+    background-size: 200% 100%;
 }
 
-@keyframes destelloBorde {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-.stat::after {
-    content: "⛽";
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 40px;
-    opacity: 0.05;
-    transform: rotate(15deg);
-}
-
-.stat:hover {
-    transform: scale(1.05);
-    border-color: rgba(255, 80, 80, 0.5);
-    box-shadow: 0 15px 40px -5px #ff0000;
+@keyframes correrBorde {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
 }
 
 .stat h3 {
-    color: #aaa;
-    font-size: 16px;
+    color: #9aaec2;
+    font-size: 17px;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .stat p {
-    font-size: 36px;
+    font-size: 46px;
     font-weight: 800;
-    color: #ff4d4d;
+    background: linear-gradient(135deg, #fff, #ffb3b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-    letter-spacing: 1px;
+    line-height: 1.2;
+    text-shadow: 0 0 30px rgba(255, 50, 50, 0.5);
 }
 
-/* ALERTA MEJORADA */
+/* Alerta tipo banner */
 .alerta {
-    margin-top: 25px;
-    padding: 20px 25px;
-    background: linear-gradient(135deg, #2a0000, #1f0000);
-    border-left: 6px solid #ff0000;
-    border-radius: 12px;
-    color: #ffb3b3;
+    background: linear-gradient(135deg, #2f0a0a, #1f0404);
+    border: 1px solid #ff4d4d;
+    border-radius: 50px;
+    padding: 20px 35px;
+    margin: 30px 0 10px;
+    color: #ffb8b8;
     font-size: 18px;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 15px;
-    box-shadow: 0 10px 20px -5px rgba(255, 0, 0, 0.3);
-    animation: pulseAlerta 2s ease-in-out infinite;
+    gap: 20px;
+    box-shadow: 0 15px 30px -12px #ff0000;
+    animation: latidoAlerta 2.5s ease-in-out infinite;
 }
 
-@keyframes pulseAlerta {
-    0%, 100% { border-left-color: #ff0000; }
-    50% { border-left-color: #ff6a6a; box-shadow: 0 10px 25px -3px #ff0000; }
+@keyframes latidoAlerta {
+    0%, 100% { box-shadow: 0 15px 30px -12px #ff0000; }
+    50% { box-shadow: 0 20px 40px -8px #ff4d4d, 0 0 20px #ff0000; }
 }
 
 .alerta::before {
-    content: "⚠️";
-    font-size: 28px;
-    filter: drop-shadow(0 0 5px #ff0000);
+    content: "⚠️ ADVERTENCIA ⚠️";
+    font-weight: 700;
+    color: #ff4d4d;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 16px;
+    letter-spacing: 1px;
 }
 
-/* GRÁFICA MEJORADA */
+/* Contenedor gráfica con efecto glass */
 .chart-container {
     position: relative;
-    height: 450px;
-    margin: 30px 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 60, 60, 0.2);
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+    height: 500px;
+    margin: 40px 0 20px;
+    padding: 30px;
+    background: rgba(10, 15, 20, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.7);
 }
 
-/* BOTÓN MEJORADO */
+/* Botón principal ultra premium */
 button {
-    background: linear-gradient(135deg, #ff1a1a, #b30000, #8b0000);
+    background: linear-gradient(135deg, #ff3a3a, #b30000, #6d0000);
     border: none;
-    padding: 18px 40px;
-    font-size: 18px;
+    padding: 22px 55px;
+    font-size: 20px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    border-radius: 50px;
-    cursor: pointer;
+    border-radius: 60px;
     color: white;
-    box-shadow: 0 10px 30px -5px #ff0000, 0 0 0 2px rgba(255, 255, 255, 0.1) inset;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 15px 35px -8px #ff0000, 0 0 0 2px rgba(255, 255, 255, 0.2) inset, 0 0 20px rgba(255, 0, 0, 0.5);
+    transition: all 0.4s;
     display: block;
-    margin: 40px auto 20px;
+    margin: 50px auto 20px;
     width: fit-content;
     position: relative;
     overflow: hidden;
 }
 
-button::before {
+button::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s ease;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(25deg);
+    animation: destelloBoton 4s linear infinite;
+}
+
+@keyframes destelloBoton {
+    0% { transform: rotate(25deg) translateX(-100%); }
+    20%, 100% { transform: rotate(25deg) translateX(200%); }
 }
 
 button:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 20px 40px -3px #ff0000, 0 0 0 3px rgba(255, 100, 100, 0.3) inset;
-}
-
-button:hover::before {
-    left: 100%;
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 25px 50px -5px #ff4d4d, 0 0 0 4px rgba(255, 150, 150, 0.5) inset;
+    letter-spacing: 6px;
 }
 
 button:active {
-    transform: scale(0.95) translateY(0);
+    transform: scale(0.96) translateY(2px);
 }
 
-/* FOOTER MEJORADO */
+/* Footer elegante */
 footer {
     text-align: center;
-    padding: 30px;
-    color: #888;
-    font-size: 15px;
-    letter-spacing: 1px;
-    border-top: 1px solid rgba(255, 60, 60, 0.2);
-    margin-top: 40px;
+    padding: 40px 20px;
+    color: #7f8c9f;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    border-top: 1px solid rgba(255, 80, 80, 0.15);
+    margin-top: 60px;
     position: relative;
 }
 
-footer::before {
-    content: "⛽";
-    font-size: 20px;
-    margin-right: 10px;
-    opacity: 0.5;
+footer span {
+    color: #ff6a6a;
+    font-weight: 500;
 }
 
-/* IMPRESIÓN */
-@media print {
-    body {
-        background: white;
-        color: black;
+/* Animaciones de entrada */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    
-    body::before,
-    .card::after,
-    .stat::before,
-    .stat::after,
-    button {
-        display: none;
-    }
-    
-    .card {
-        background: white;
-        border: 1px solid #ccc;
-        box-shadow: none;
-        break-inside: avoid;
-    }
-    
-    .card h2 { color: #333; }
-    .card p { color: #333; }
-    .stat { background: #f5f5f5; border: 1px solid #ddd; }
-    .stat p { color: #cc0000; }
-    .alerta { background: #fff0f0; color: #660000; border: 1px solid #ff0000; }
-    
-    canvas {
-        filter: grayscale(100%);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* RESPONSIVE */
+.card, .stat, .alerta, .chart-container {
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.stat:nth-child(1) { animation-delay: 0.15s; }
+.stat:nth-child(2) { animation-delay: 0.25s; }
+.stat:nth-child(3) { animation-delay: 0.35s; }
+
+/* Responsive perfecto */
+@media (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    .card { padding: 30px; }
+    .card h2 { font-size: 28px; }
+    .stat p { font-size: 38px; }
+}
+
 @media (max-width: 768px) {
-    header h1 { font-size: 32px; }
-    .card { padding: 25px; }
+    header { padding: 70px 20px; }
+    header h1 { font-size: 36px; }
+    header p { font-size: 16px; padding: 6px 15px; }
     .stats { grid-template-columns: 1fr; }
-    .stat p { font-size: 30px; }
-    .chart-container { height: 350px; }
-    button { padding: 15px 30px; font-size: 16px; }
+    .alerta { flex-direction: column; text-align: center; border-radius: 30px; }
+    .alerta::before { width: 100%; }
+    button { padding: 18px 40px; font-size: 18px; }
+    .chart-container { height: 400px; padding: 15px; }
 }
 
-/* ANIMACIONES ADICIONALES */
-@keyframes glow {
-    0%, 100% { text-shadow: 0 0 10px rgba(255,0,0,0.5); }
-    50% { text-shadow: 0 0 20px rgba(255,0,0,0.8); }
+/* Estilos para impresión */
+@media print {
+    body { background: white; color: black; }
+    body::before, header::before, .card::after, .stat::before, button::after { display: none; }
+    .card { background: white; border: 2px solid #ccc; box-shadow: none; }
+    .stat { background: #f0f0f0; border: 1px solid #aaa; }
+    .stat p { -webkit-text-fill-color: #b30000; }
+    .alerta { background: #fff0f0; border: 2px solid #ff0000; color: black; }
+    button { display: none; }
+    canvas { filter: grayscale(100%); }
 }
 
-.card h2 {
-    animation: glow 3s ease-in-out infinite;
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 12px;
+    background: #1a1e24;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 60, 60, 0.05);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #b30000, #ff4d4d);
+    border-radius: 10px;
+    border: 2px solid #1a1e24;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff4d4d, #ff9999);
 }
 </style>
 </head>
-
 <body>
+
 <header>
-    <h1>⛽ ANÁLISIS COMPARATIVO DE VENTAS ⛽</h1>
-    <p>EDS Amozoc II | Semanas 1 de Febrero vs Marzo</p>
+    <h1>EDS AMOZOC II</h1>
+    <p>ANÁLISIS COMPARATIVO • SEMANA 1 FEB VS MAR</p>
 </header>
 
 <div class="container">
+    <!-- Tarjeta de resumen -->
     <div class="card">
-        <h2>📊 Resumen del análisis</h2>
-        <p>Durante la primera semana de marzo, la EDS Amozoc II registró un promedio general de 
-        <strong>3,414 litros vendidos</strong>. La distribución fue de 
-        <strong>2,486 litros de Magna</strong>, <strong>563 litros de Premium</strong> y 
-        <strong>487 litros de diésel</strong>.</p>
-        
-        <p>Al compararlo con la primera semana de febrero, donde el promedio general fue de 
-        <strong>3,108.92 litros</strong>, se observa un incremento de <strong>305.08 litros</strong>.</p>
-        
-        <p>En febrero, Magna tuvo <strong>2,752.61 litros</strong>, Premium 
-        <strong>30.23 litros</strong> y diésel <strong>409.86 litros</strong>.</p>
-        
-        <p><span style="color: #ff6a6a;">📉 Magna bajó <strong>266.61 litros</strong></span> | 
-        <span style="color: #6aff6a;">📈 Premium subió <strong>532.77 litros</strong></span> | 
-        <span style="color: #6aff6a;">📈 Diésel aumentó <strong>77.14 litros</strong></span></p>
-        
-        <p>Las ventas generales aumentaron; sin embargo, el desabasto de diésel 
-        <strong style="background: rgba(255,0,0,0.3);">afecta y sigue afectando el desempeño</strong>, ya que desde el 
-        <strong>7 de marzo</strong> no se cuenta con este producto.</p>
+        <h2>RESUMEN EJECUTIVO</h2>
+        <p><strong>📌 Marzo (semana 1):</strong> Promedio general <strong>3,414 L</strong> • Magna <strong>2,486 L</strong> • Premium <strong>563 L</strong> • Diésel <strong>487 L</strong></p>
+        <p><strong>📌 Febrero (semana 1):</strong> Promedio general <strong>3,108.92 L</strong> • Magna <strong>2,752.61 L</strong> • Premium <strong>30.23 L</strong> • Diésel <strong>409.86 L</strong></p>
+        <p><strong>📊 Variación:</strong> <span style="color: #ff6a6a;">Magna ↓266.61 L</span> • <span style="color: #a5ff9a;">Premium ↑532.77 L</span> • <span style="color: #a5ff9a;">Diésel ↑77.14 L</span> • <span style="color: #a5ff9a;">General ↑305.08 L</span></p>
+        <p><strong style="background: rgba(255, 0, 0, 0.25); padding: 4px 15px; border-radius: 40px;">⚠️ CRÍTICO: Desabasto de diésel desde el 7 de marzo</strong></p>
     </div>
 
+    <!-- Tarjeta de indicadores -->
     <div class="card">
-        <h2>📈 Indicadores principales</h2>
+        <h2>INDICADORES CLAVE</h2>
         <div class="stats">
             <div class="stat">
                 <h3>Promedio Marzo</h3>
@@ -440,81 +471,79 @@ footer::before {
                 <p>+305.08 L</p>
             </div>
         </div>
-
+        
         <div class="alerta">
-            ⚠ Desabasto de diésel desde el 7 de marzo. Esto continúa afectando el desempeño de la EDS.
+            <span>DESABASTO DE DIÉSEL DESDE EL 7 DE MARZO - AFECTANDO OPERACIONES</span>
         </div>
     </div>
 
+    <!-- Tarjeta de gráfica -->
     <div class="card">
-        <h2>📊 Gráfica comparativa de ventas</h2>
+        <h2>COMPARATIVO DE VENTAS</h2>
         <div class="chart-container">
             <canvas id="graficaVentas"></canvas>
         </div>
     </div>
 
+    <!-- Botón de impresión -->
     <button onclick="window.print()">
-        🖨️ IMPRIMIR REPORTE 🖨️
+        IMPRIMIR REPORTE
     </button>
 </div>
 
 <footer>
-    Reporte semanal de análisis | EDS Amozoc II
+    <span>EDS AMOZOC II</span> • REPORTE SEMANAL DE ANÁLISIS • TODOS LOS DERECHOS RESERVADOS
 </footer>
 
 <script>
-// CONTADORES ANIMADOS MEJORADOS
-function animarContador(id, valor) {
-    let elemento = document.getElementById(id);
-    let inicio = 0;
-    let paso = valor > 3000 ? 40 : 20;
-    let duracion = 1500; // 1.5 segundos
-    let incremento = valor / (duracion / 20);
+// Animación de contadores profesional
+function animarContador(elementId, valorFinal, duracion = 1600) {
+    const elemento = document.getElementById(elementId);
+    const inicio = 0;
+    const incremento = valorFinal / (duracion / 16);
+    let valorActual = 0;
     
-    let intervalo = setInterval(() => {
-        inicio += incremento;
-        
-        if (inicio >= valor) {
-            inicio = valor;
-            clearInterval(intervalo);
-            elemento.style.color = "#ff6a6a";
+    const animar = () => {
+        valorActual += incremento;
+        if (valorActual >= valorFinal) {
+            elemento.textContent = valorFinal.toLocaleString('es-MX') + ' L';
+            return;
         }
-        
-        elemento.textContent = Math.round(inicio).toLocaleString() + " L";
-    }, 20);
+        elemento.textContent = Math.floor(valorActual).toLocaleString('es-MX') + ' L';
+        requestAnimationFrame(animar);
+    };
+    
+    requestAnimationFrame(animar);
 }
 
-// Iniciar animaciones cuando la página carga
-window.addEventListener('load', function() {
-    animarContador("marzo", 3414);
-    animarContador("febrero", 3108);
+// Iniciar animaciones cuando todo esté cargado
+window.addEventListener('load', () => {
+    animarContador('marzo', 3414);
+    animarContador('febrero', 3108);
 });
 
-// GRÁFICA MEJORADA
-const ctx = document.getElementById("graficaVentas").getContext('2d');
-
+// Gráfica profesional
+const ctx = document.getElementById('graficaVentas').getContext('2d');
 new Chart(ctx, {
-    type: "bar",
+    type: 'bar',
     data: {
-        labels: ["Magna", "Premium", "Diésel", "Promedio General"],
+        labels: ['Magna', 'Premium', 'Diésel', 'Promedio'],
         datasets: [
             {
-                label: "Febrero 2024",
+                label: 'Febrero 2024',
                 data: [2752.61, 30.23, 409.86, 3108.92],
-                backgroundColor: "rgba(160, 160, 160, 0.8)",
-                borderColor: "#ffffff",
-                borderWidth: 2,
-                borderRadius: 8,
-                barPercentage: 0.7,
+                backgroundColor: 'rgba(140, 150, 160, 0.9)',
+                borderRadius: 10,
+                barPercentage: 0.6,
+                categoryPercentage: 0.8,
             },
             {
-                label: "Marzo 2024",
+                label: 'Marzo 2024',
                 data: [2486, 563, 487, 3414],
-                backgroundColor: "rgba(255, 60, 60, 0.9)",
-                borderColor: "#ffaaaa",
-                borderWidth: 2,
-                borderRadius: 8,
-                barPercentage: 0.7,
+                backgroundColor: 'rgba(255, 70, 70, 0.9)',
+                borderRadius: 10,
+                barPercentage: 0.6,
+                categoryPercentage: 0.8,
             }
         ]
     },
@@ -523,45 +552,55 @@ new Chart(ctx, {
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                labels: {
-                    color: "white",
-                    font: { size: 14, weight: 'bold' },
+                labels: { 
+                    color: '#fff',
+                    font: { size: 14, weight: '600', family: 'Inter' },
+                    padding: 20,
                     usePointStyle: true,
-                    padding: 20
-                }
+                },
+                position: 'top',
             },
             tooltip: {
-                backgroundColor: "#1a1a1a",
-                titleColor: "#ff4d4d",
-                bodyColor: "#ddd",
-                borderColor: "#ff0000",
+                backgroundColor: '#1a1f2a',
+                titleColor: '#ff8a8a',
+                bodyColor: '#ddd',
+                borderColor: '#ff4d4d',
                 borderWidth: 2,
-                padding: 12
+                padding: 12,
+                bodyFont: { size: 14, family: 'Inter' },
+                titleFont: { size: 15, weight: 'bold', family: 'Inter' },
+                callbacks: {
+                    label: (context) => `${context.dataset.label}: ${context.raw.toLocaleString('es-MX')} L`
+                }
             }
         },
         scales: {
             x: {
                 ticks: { 
-                    color: "white",
-                    font: { size: 13, weight: '500' }
+                    color: '#fff',
+                    font: { size: 14, weight: '500', family: 'Inter' }
                 },
-                grid: { color: "rgba(255, 60, 60, 0.1)" }
+                grid: { display: false },
             },
             y: {
                 ticks: { 
-                    color: "white",
-                    font: { size: 12 },
-                    callback: function(value) {
-                        return value.toLocaleString() + ' L';
-                    }
+                    color: '#fff',
+                    font: { size: 13, family: 'Inter' },
+                    callback: (value) => value.toLocaleString('es-MX') + ' L'
                 },
-                grid: { color: "rgba(255, 60, 60, 0.2)" },
-                beginAtZero: true
+                grid: { 
+                    color: 'rgba(255, 80, 80, 0.1)',
+                    drawBorder: false,
+                },
+                beginAtZero: true,
             }
         },
         animation: {
             duration: 2000,
-            easing: 'easeInOutQuart'
+            easing: 'easeInOutQuart',
+        },
+        layout: {
+            padding: { top: 20, bottom: 20 }
         }
     }
 });
