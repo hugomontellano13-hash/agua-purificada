@@ -3,586 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purificadora Sargy | Vive Hidratado</title>
+    <title>¿Quieres salir conmigo? ❤️</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a1f2b;
-            color: #ffffff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Fondo dinámico con olas y partículas */
-        .fondo-animado {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #072e3b 0%, #0b4b5c 45%, #138597 100%);
-            z-index: -2;
-        }
-
-        .fondo-animado::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.15) 0%, transparent 30%),
-                        radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
-                        repeating-linear-gradient(45deg, rgba(0, 230, 255, 0.02) 0px, rgba(0, 230, 255, 0.02) 2px, transparent 2px, transparent 8px);
-            animation: rotar 60s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes rotar {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Partículas flotantes */
-        .particulas {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .particulas span {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(0, 255, 255, 0.4);
-            border-radius: 50%;
-            box-shadow: 0 0 15px #00ffff;
-            animation: flotar 8s infinite ease-in-out;
-        }
-
-        @keyframes flotar {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
-            50% { transform: translateY(-30px) translateX(20px); opacity: 0.8; }
-        }
-
-        /* Header con efecto glassmorphism */
-        header {
-            min-height: 90vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 2rem;
-            position: relative;
-            backdrop-filter: blur(2px);
-        }
-
-        .vive-hidratado {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 500;
-            letter-spacing: 6px;
-            color: #b2f0ff;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            animation: aparecer 1s ease-out;
-        }
-
-        h1 {
-            font-size: clamp(4rem, 12vw, 7rem);
-            font-weight: 900;
-            line-height: 0.9;
-            background: linear-gradient(135deg, #ffffff, #7fffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-            margin-bottom: 0.5rem;
-            animation: aparecer 1.2s ease-out;
-        }
-
-        .purifi {
-            font-size: clamp(1.5rem, 5vw, 2.8rem);
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-top: -0.5rem;
-            text-shadow: 0 0 20px cyan;
-        }
-
-        .subtitulo {
-            font-size: 1.5rem;
-            color: #e0ffff;
-            margin: 1.5rem 0 1rem;
-            font-weight: 300;
-            font-style: italic;
-        }
-
-        .logo-principal {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
-            background: rgba(0, 255, 255, 0.1);
-            padding: 10px;
-            box-shadow: 0 25px 50px -8px rgba(0, 255, 255, 0.4),
-                        inset 0 0 30px rgba(0, 255, 255, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: 0.5s;
-            animation: flotarLogo 6s infinite alternate;
-        }
-
-        @keyframes flotarLogo {
-            0% { border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%; transform: translateY(0); }
-            100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; transform: translateY(-15px); }
-        }
-
-        .direccion-header {
-            font-size: 1.2rem;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            border: 1px solid cyan;
-            margin: 2rem 0 1rem;
-        }
-
-        .btn-ws {
-            background: rgba(0, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 2px solid #00ffff;
-            color: white;
-            padding: 1.2rem 3rem;
-            border-radius: 60px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: 0.4s;
-            box-shadow: 0 10px 25px #00ffff33;
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-ws:hover {
-            background: #00ffff;
-            color: #072e3b;
-            transform: scale(1.07) translateY(-5px);
-            box-shadow: 0 20px 40px #00ffff;
-        }
-
-        /* Secciones generales */
-        .seccion {
-            padding: 5rem 1.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .seccion h2 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #aaffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .seccion > p {
-            color: #b0eaff;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        /* SECCIÓN DE PRECIOS MEJORADA */
-        .precios-grid {
-            display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .precio-card {
-            background: rgba(10, 40, 50, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 40px;
-            padding: 2.5rem 2rem;
-            width: 320px;
-            transition: 0.5s;
-            position: relative;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
             overflow: hidden;
         }
 
-        .precio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #00ffff, #ffffff);
-        }
-
-        .precio-card:hover {
-            transform: translateY(-15px);
-            border-color: #00ffff;
-            box-shadow: 0 30px 50px -15px #00ffff;
-        }
-
-        .precio-card.popular {
-            transform: scale(1.05);
-            border: 2px solid #00ffff;
-            box-shadow: 0 20px 40px #00ffff66;
-        }
-
-        .precio-card.popular:hover {
-            transform: scale(1.05) translateY(-15px);
-        }
-
-        .precio-icono {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .precio-tipo {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .precio-valor {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #00ffff;
-            text-shadow: 0 0 20px cyan;
-            margin: 1rem 0;
-        }
-
-        .precio-detalle {
-            color: #b0f0ff;
-            font-size: 1.1rem;
-            margin: 1rem 0;
-            padding: 0.5rem;
-            border-top: 1px solid #00ffff33;
-            border-bottom: 1px solid #00ffff33;
-        }
-
-        .precio-beneficios {
-            list-style: none;
-            text-align: left;
-            margin: 1.5rem 0;
-        }
-
-        .precio-beneficios li {
-            margin: 0.8rem 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #e0ffff;
-        }
-
-        .precio-beneficios li::before {
-            content: "💧";
-            font-size: 1.2rem;
-        }
-
-        .precio-boton {
-            background: transparent;
-            border: 2px solid #00ffff;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-
-        .precio-boton:hover {
-            background: #00ffff;
-            color: #072e3b;
-        }
-
-        .nota-precios {
-            background: rgba(0, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            padding: 1.5rem;
-            border-radius: 60px;
-            max-width: 600px;
-            margin: 2rem auto 0;
-            border: 1px dashed #00ffff;
-        }
-
-        /* Tarjetas de servicios */
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .card {
-            background: rgba(20, 60, 75, 0.3);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 35px;
-            width: 320px;
-            padding: 2rem 1.5rem;
-            transition: 0.5s;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        .container {
             text-align: center;
         }
 
-        .card:hover {
-            transform: translateY(-20px) scale(1.02);
-            border-color: #00ffff;
-            box-shadow: 0 30px 50px -15px #00ffff;
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
         }
 
-        .card-img {
-            width: 130px;
-            height: 130px;
+        #meme-img {
+            width: 250px;
+            height: 250px;
             object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #00ffff;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 15px 25px rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .card h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #ffffff;
-        }
-
-        .card p {
-            color: #d0f0ff;
-            font-size: 1rem;
-        }
-
-        /* Mapa con diseño envolvente */
-        .mapa-contenedor {
-            max-width: 1000px;
-            margin: 3rem auto 0;
-            border-radius: 45px;
-            padding: 12px;
-            background: linear-gradient(135deg, #00ffff22, #ffffff22);
-            box-shadow: 0 30px 60px -15px black;
-        }
-
-        .mapa-contenedor iframe {
-            width: 100%;
-            height: 450px;
-            border-radius: 35px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .direccion {
-            font-size: 1.4rem;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 0.8rem 2rem;
-            border-radius: 60px;
-            display: inline-block;
-            border: 1px solid cyan;
-            backdrop-filter: blur(5px);
-            margin: 2rem 0 1rem;
-        }
-
-        /* Footer elegante */
-        footer {
-            text-align: center;
-            padding: 3rem 1.5rem;
-            font-size: 1.1rem;
-            opacity: 0.75;
-            border-top: 1px solid #00ffff33;
-            backdrop-filter: blur(5px);
-        }
-
-        /* WhatsApp flotante mejorado */
-        .ws-fijo {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
+        .buttons {
             display: flex;
+            gap: 20px;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 30px #25d36699;
-            transition: 0.3s;
-            z-index: 100;
-            border: 2px solid white;
-            font-size: 1.1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .ws-fijo:hover {
-            background: white;
-            color: #25d366;
-            border-color: #25d366;
-            transform: scale(1.1) rotate(-3deg);
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.2s ease;
         }
 
-        @media (max-width: 700px) {
-            .seccion h2 { font-size: 2.2rem; }
-            .logo-principal { width: 150px; height: 150px; }
-            .ws-fijo { padding: 0.8rem 1.5rem; }
-            .purifi { letter-spacing: 4px; }
-            .precio-card.popular { transform: scale(1); }
-            .precio-card.popular:hover { transform: scale(1) translateY(-15px); }
+        #btn-si {
+            background-color: #28a745;
+            color: white;
         }
 
-        @keyframes aparecer {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        #btn-no {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Clase para el éxito */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="fondo-animado"></div>
-    <div class="particulas">
-        <span style="top: 20%; left: 10%; animation-duration: 9s;"></span>
-        <span style="top: 70%; left: 80%; animation-duration: 11s; width: 10px; height: 10px;"></span>
-        <span style="top: 40%; left: 40%; animation-duration: 7s;"></span>
-        <span style="top: 85%; left: 25%; animation-duration: 13s; width: 8px; height: 8px;"></span>
-        <span style="top: 15%; left: 70%; animation-duration: 10s;"></span>
+
+    <div class="container" id="main-card">
+        <img id="meme-img" src="https://media.tenor.com/ICV9YshfS_AAAAAi/cat-puss-in-boots.gif" alt="Meme triste">
+        <h1 id="pregunta">¿Pasamos este 14 de febrero juntos?</h1>
+        
+        <div class="buttons">
+            <button id="btn-si">Sí</button>
+            <button id="btn-no">No</button>
+        </div>
     </div>
 
-    <header>
-        <div class="vive-hidratado">VIVE HIDRATADO</div>
-        <h1>Purificadora</h1>
-        <div class="purifi">Sargy</div>
-        <div class="subtitulo">✨ Hidratación que cuida de ti ✨</div>
-        <img src="logo2.png" class="logo-principal" alt="Sargy Logo">
-        <div class="direccion-header">📍 Calle Mármol No.115, Col. San Jacinto, Amozoc</div>
-        <a href="https://wa.me/522226695065" class="btn-ws" target="_blank">
-            <span>📲</span> Pedir por WhatsApp
-        </a>
-    </header>
+    <div class="container hidden" id="success-message">
+        <img src="https://media.tenor.com/u_pW-zB0yCAAAAAi/cat-love.gif" alt="Meme feliz" style="width: 300px; border-radius: 15px;">
+        <h1 style="color: #d63384;">¡Sabía que dirías que sí! ❤️</h1>
+        <p>Prepara tus cosas, ¡nos vemos el 14! 😍</p>
+    </div>
 
-    <!-- NUEVA SECCIÓN DE PRECIOS MEJORADA -->
-    <section class="seccion">
-        <h2>💰 Precios especiales</h2>
-        <p>Elige el plan que mejor se adapte a ti</p>
-        
-        <div class="precios-grid">
-            <!-- Precio Público -->
-            <div class="precio-card">
-                <div class="precio-icono">🏠</div>
-                <div class="precio-tipo">Público General</div>
-                <div class="precio-valor">$15</div>
-                <div class="precio-detalle">por garrafón</div>
-                <ul class="precio-beneficios">
-                    <li>Entrega a domicilio gratis</li>
-                    <li>Sin mínimo de compra</li>
-                    <li>Pago en efectivo o transferencia</li>
-                </ul>
-                <a href="https://wa.me/522226695065?text=Hola%2C%20quiero%20pedir%20agua%20a%20domicilio%20precio%20p%C3%BAblico" class="precio-boton" target="_blank">Pedir ahora</a>
-            </div>
+    <script>
+        const btnSi = document.getElementById('btn-si');
+        const btnNo = document.getElementById('btn-no');
+        const memeImg = document.getElementById('meme-img');
+        const mainCard = document.getElementById('main-card');
+        const successMessage = document.getElementById('success-message');
+        const pregunta = document.getElementById('pregunta');
 
-            <!-- Precio Tiendas (Destacado) -->
-            <div class="precio-card popular">
-                <div class="precio-icono">🏪</div>
-                <div class="precio-tipo">Para Tiendas</div>
-                <div class="precio-valor">$10</div>
-                <div class="precio-detalle">por garrafón</div>
-                <ul class="precio-beneficios">
-                    <li><strong>Desde 8 garrafones</strong></li>
-                    <li>Precio mayoreo exclusivo</li>
-                    <li>Entrega gratuita</li>
-            
-                </ul>
-                <a href="https://wa.me/522226695065?text=Hola%2C%20quiero%20precios%20para%20tienda%20desde%208%20garrafones" class="precio-boton" target="_blank">Cotizar tienda</a>
-            </div>
+        let siFontSize = 1.2; // Tamaño inicial en rem
+        let noClickCount = 0;
 
-            <!-- Precio Repartidores -->
-            <div class="precio-card">
-                <div class="precio-icono">🛵</div>
-                <div class="precio-tipo">Repartidores</div>
-                <div class="precio-valor">$10</div>
-                <div class="precio-detalle">por garrafón</div>
-                <ul class="precio-beneficios">
-                    <li>Precio especial para revendedores</li>
-                    <li>Horario flexible de carga</li>
-                    <li>Zonas exclusivas disponibles</li>
-                    <li>Contacto por WhatsApp</li>
-                </ul>
-                <a href="https://wa.me/522226695065?text=Hola%2C%20soy%20repartidor%20y%20quiero%20informaci%C3%B3n%20de%20precios" class="precio-boton" target="_blank">Ser repartidor</a>
-            </div>
-        </div>
+        const frasesNo = [
+            "¿Segura que no quieres?",
+            "Piénsalo bien...",
+            "Pero te voy a ver a tu casa :c",
+            "Entiendo, es tu decisión :c",
+            "No te arrepentirás, ¡lo juro!",
+            "¡Solo dale a SÍ!",
+            "¿Con quién vas a salir? 🤨",
+            "Voy a llorar...",
+            "Ya ni me hables."
+        ];
 
-        <div class="nota-precios">
-            💧 Todos los precios incluyen envase y entrega a domicilio sin costo extra · Paga contra entrega o por transferencia
-        </div>
-    </section>
+        const memesTristes = [
+            "https://media.tenor.com/Y5V97G6O7m0AAAAi/sad-cat.gif",
+            "https://media.tenor.com/0v8XoW9n3pIAAAAi/cat-sad.gif",
+            "https://media.tenor.com/zS_T6Yq6_m0AAAAi/crying-cat.gif"
+        ];
 
-    <section class="seccion">
-        <h2>💧 Nuestros servicios</h2>
-        <p>Agua purificada de alta calidad para ti y tu negocio</p>
-        <div class="cards">
-            <div class="card">
-                <img src="logo3.png" class="card-img" alt="Garrafones">
-                <h3>Venta de Garrafones</h3>
-                <p>Agua purificada con procesos de ósmosis inversa y mineralización.</p>
-            </div>
-            <div class="card">
-                <img src="logo1.png" class="card-img" alt="Reparto">
-                <h3>Servicio a Domicilio</h3>
-                <p>Entrega gratuita en Amozoc y zonas aledañas en menos de 2 horas.</p>
-            </div>
-            <div class="card">
-                <img src="logo2.png" class="card-img" alt="Calidad">
-                <h3>Máxima Calidad</h3>
-                <p>Certificaciones microbiológicas y filtros de última generación.</p>
-            </div>
-        </div>
-    </section>
+        btnNo.addEventListener('click', () => {
+            // Aumentar tamaño del botón SÍ
+            siFontSize += 2; 
+            btnSi.style.fontSize = siFontSize + "rem";
+            btnSi.style.padding = (siFontSize * 10) + "px " + (siFontSize * 20) + "px";
 
-    <section class="seccion">
-        <h2>📍 Visítanos</h2>
-        <div class="direccion">
-            Calle Mármol No.115, Col. San Jacinto, Amozoc de Mota
-        </div>
-        <div class="mapa-contenedor">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.838584872322!2d-98.0535311252874!3d19.03561915316315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfdf9857212455%3A0xe9f79b03f0b2a8d3!2sCalle%20M%C3%A1rmol%20115%2C%20San%20Jacinto%2C%2072993%20Amozoc%20de%20Mota%2C%20Pue.!5e0!3m2!1ses-419!2smx!4v1709923000000!5m2!1ses-419!2smx" 
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
+            // Cambiar texto del botón NO
+            if (noClickCount < frasesNo.length) {
+                btnNo.innerText = frasesNo[noClickCount];
+                // Cambiar meme aleatoriamente
+                memeImg.src = memesTristes[Math.floor(Math.random() * memesTristes.length)];
+            } else {
+                btnNo.innerText = "Ya no tienes opción 😎";
+                btnNo.style.display = "none"; // Desaparece el botón No después de mucho
+            }
 
-    <footer>
-        <p>💧 Purificadora Sargy · Vive hidratado · Agua de calidad 💧</p>
-        <p style="margin-top: 1rem; font-size: 0.95rem;">© 2026 · Hidratación que cuida de ti · Tel: 222 669 5065</p>
-    </footer>
+            noClickCount++;
+        });
 
-    <a href="https://wa.me/522226695065" class="ws-fijo" target="_blank">
-        <span>💬</span> WhatsApp directo
-    </a>
+        btnSi.addEventListener('click', () => {
+            mainCard.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
-
-
-
 
