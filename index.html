@@ -3,176 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purificadora Sargy</title>
+    <title>Purificadora Sargy | Agua de Calidad</title>
     <style>
-        /* RESET Y BASE */
-        *{ margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        
-        body {
-            background: #043b4a; /* Color base */
-            background: linear-gradient(135deg, #02111b 0%, #043b4a 50%, #0b8793 100%);
-            color: white;
-            overflow-x: hidden;
-            text-align: center;
-            min-height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* FONDO DE PUNTITOS REALISTA (Cubre todo y es infinito) */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a1f2b;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Fondo dinámico con olas y partículas */
         .fondo-animado {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: radial-gradient(rgba(0, 229, 255, 0.3) 1px, transparent 1px);
-            background-size: 35px 35px;
-            animation: desplazamiento 20s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #072e3b 0%, #0b4b5c 45%, #138597 100%);
+            z-index: -2;
+        }
+
+        .fondo-animado::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.15) 0%, transparent 30%),
+                        radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+                        repeating-linear-gradient(45deg, rgba(0, 230, 255, 0.02) 0px, rgba(0, 230, 255, 0.02) 2px, transparent 2px, transparent 8px);
+            animation: rotar 60s linear infinite;
             z-index: -1;
         }
 
-        @keyframes desplazamiento {
-            from { background-position: 0 0; }
-            to { background-position: 100% 100%; }
+        @keyframes rotar {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-       
-        header { padding: 80px 20px; }
-        h1 { 
-            font-size: 50px; 
-            color: #00e5ff; 
-            text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-            margin-bottom: 10px;
+        /* Partículas flotantes */
+        .particulas {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
+
+        .particulas span {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(0, 255, 255, 0.4);
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ffff;
+            animation: flotar 8s infinite ease-in-out;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            50% { transform: translateY(-30px) translateX(20px); opacity: 0.8; }
+        }
+
+        /* Header con efecto glassmorphism */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff, #7fffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            margin-bottom: 0.5rem;
+            animation: aparecer 1.2s ease-out;
+        }
+
+        .subtitulo {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #b2f0ff;
+            margin-bottom: 2rem;
+            word-spacing: 8px;
+        }
+
         .logo-principal {
-            width: 280px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin: 20px 0;
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 10px;
+            box-shadow: 0 25px 50px -8px rgba(0, 255, 255, 0.4),
+                        inset 0 0 30px rgba(0, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: 0.5s;
+            animation: flotarLogo 6s infinite alternate;
         }
 
-        /* BOTONES */
+        @keyframes flotarLogo {
+            0% { border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%; transform: translateY(0); }
+            100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; transform: translateY(-15px); }
+        }
+
         .btn-ws {
-            display: inline-block;
-            background: #00e5ff;
-            color: #02111b;
-            padding: 15px 30px;
-            border-radius: 50px;
+            background: rgba(0, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00ffff;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+            letter-spacing: 1px;
+            transition: 0.4s;
+            box-shadow: 0 10px 25px #00ffff33;
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-        .btn-ws:hover { transform: scale(1.05); background: white; }
 
-        /* SECCIONES Y TARJETAS */
-        .section { padding: 60px 20px; position: relative; }
+        .btn-ws:hover {
+            background: #00ffff;
+            color: #072e3b;
+            transform: scale(1.07) translateY(-5px);
+            box-shadow: 0 20px 40px #00ffff;
+        }
+
+        /* Secciones generales */
+        .seccion {
+            padding: 5rem 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .seccion h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #aaffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .seccion > p {
+            color: #b0eaff;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Tarjetas ultra modernas */
         .cards {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 25px;
-            margin-top: 30px;
+            justify-content: center;
+            gap: 2rem;
         }
+
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            width: 300px;
-            padding: 20px;
-            transition: 0.4s;
+            background: rgba(20, 60, 75, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 35px;
+            width: 320px;
+            padding: 2rem 1.5rem;
+            transition: 0.5s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
-        .card:hover { transform: translateY(-10px); border-color: #00e5ff; }
-        .card img {
-            width: 100%;
-            height: 200px;
+
+        .card:hover {
+            transform: translateY(-20px) scale(1.02);
+            border-color: #00ffff;
+            box-shadow: 0 30px 50px -15px #00ffff;
+        }
+
+        .card-img {
+            width: 130px;
+            height: 130px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid #00ffff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 25px rgba(0, 255, 255, 0.3);
         }
 
-        /* MAPA MEJORADO */
-        .map-box {
-            max-width: 900px;
-            margin: 30px auto;
-            border-radius: 25px;
-            overflow: hidden;
-            border: 3px solid rgba(0, 229, 255, 0.2);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        .card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
         }
 
-        /* WHATSAPP FLOTANTE */
+        .card p {
+            color: #d0f0ff;
+            font-size: 1rem;
+        }
+
+        /* Mapa con diseño envolvente */
+        .mapa-contenedor {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            border-radius: 45px;
+            padding: 12px;
+            background: linear-gradient(135deg, #00ffff22, #ffffff22);
+            box-shadow: 0 30px 60px -15px black;
+        }
+
+        .mapa-contenedor iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 35px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .direccion {
+            font-size: 1.4rem;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid cyan;
+            backdrop-filter: blur(5px);
+            margin: 2rem 0 1rem;
+        }
+
+        /* Footer elegante */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.75;
+            border-top: 1px solid #00ffff33;
+            backdrop-filter: blur(5px);
+        }
+
+        /* WhatsApp flotante mejorado */
         .ws-fijo {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #25d366;
             color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
+            padding: 1rem 2rem;
+            border-radius: 60px;
             text-decoration: none;
-            font-weight: bold;
-            z-index: 1000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px #25d36699;
+            transition: 0.3s;
+            z-index: 100;
+            border: 2px solid white;
+            font-size: 1.1rem;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 35px; }
-            .logo-principal { width: 200px; }
+        .ws-fijo:hover {
+            background: white;
+            color: #25d366;
+            border-color: #25d366;
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        @media (max-width: 700px) {
+            .seccion h2 { font-size: 2.2rem; }
+            .logo-principal { width: 180px; height: 180px; }
+            .ws-fijo { padding: 0.8rem 1.5rem; }
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-
     <div class="fondo-animado"></div>
+    <div class="particulas">
+        <span style="top: 20%; left: 10%; animation-duration: 9s;"></span>
+        <span style="top: 70%; left: 80%; animation-duration: 11s; width: 10px; height: 10px;"></span>
+        <span style="top: 40%; left: 40%; animation-duration: 7s;"></span>
+        <span style="top: 85%; left: 25%; animation-duration: 13s; width: 8px; height: 8px;"></span>
+        <span style="top: 15%; left: 70%; animation-duration: 10s;"></span>
+    </div>
 
     <header>
-        <h1>Purificadora Sargy es dueño de un puto que no quiere tomar</h1>
-        <p>Hidratación que cuida de ti</p>
+        <h1>Purificadora Sargy</h1>
+        <div class="subtitulo">💧  vive hidratado  💧</div>
         <img src="logo2.png" class="logo-principal" alt="Sargy Logo">
-        <br><br>
-        <a href="https://wa.me/522226695065" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+        <a href="https://wa.me/522226695065" class="btn-ws" target="_blank">
+            <span>📲</span> Pedir por WhatsApp
+        </a>
     </header>
 
-    <section class="section">
+    <section class="seccion">
         <h2>Agua Purificada de Alta Calidad</h2>
+        <p>Más que agua, un compromiso con tu salud y bienestar</p>
         <div class="cards">
             <div class="card">
-                <img src="logo3.png" alt="Garrafones">
+                <img src="logo3.png" class="card-img" alt="Garrafones">
                 <h3>Venta de Garrafones</h3>
-                <p>Agua purificada lista para tu hogar con los más altos estándares.</p>
+                <p>Agua purificada con procesos de ósmosis inversa y mineralización.</p>
             </div>
             <div class="card">
-                <img src="logo1.png" alt="Reparto">
+                <img src="logo1.png" class="card-img" alt="Reparto">
                 <h3>Servicio a Domicilio</h3>
-                <p>Reparto rápido y confiable en toda la zona de Amozoc.</p>
+                <p>Entrega gratuita en Amozoc y zonas aledañas en menos de 2 horas.</p>
             </div>
             <div class="card">
-                <img src="logo2.png" alt="Calidad">
+                <img src="logo2.png" class="card-img" alt="Calidad">
                 <h3>Máxima Calidad</h3>
-                <p>Procesos certificados para garantizar tu salud y bienestar.</p>
+                <p>Certificaciones microbiológicas y filtros de última generación.</p>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2>Visítanos</h2>
-        <p>Calle Mármol No.115, Colonia San Jacinto, Amozoc de Mota</p>
-        
-        <div class="map-box">
+    <section class="seccion">
+        <h2>📍 Visítanos</h2>
+        <div class="direccion">
+            Calle Mármol No.115, Col. San Jacinto, Amozoc de Mota
+        </div>
+        <div class="mapa-contenedor">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.838584872322!2d-98.0535311252874!3d19.03561915316315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfdf9857212455%3A0xe9f79b03f0b2a8d3!2sCalle%20M%C3%A1rmol%20115%2C%20San%20Jacinto%2C%2072993%20Amozoc%20de%20Mota%2C%20Pue.!5e0!3m2!1ses-419!2smx!4v1709923000000!5m2!1ses-419!2smx" 
-                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
     </section>
 
-    <footer style="padding-bottom: 50px; opacity: 0.6;">
-        Purificadora Sargy © 2026
+    <footer>
+        <p>✨ Purificadora Sargy · Frescura que nutre tu día ✨</p>
+        <p style="margin-top: 1rem; font-size: 0.95rem;">© 2026 · Calidad e hidratación para tu familia</p>
     </footer>
 
-    <a href="https://wa.me/522226695065" class="ws-fijo" target="_blank">WhatsApp</a>
-
+    <a href="https://wa.me/522226695065" class="ws-fijo" target="_blank">
+        <span>💬</span> WhatsApp directo
+    </a>
 </body>
 </html>
